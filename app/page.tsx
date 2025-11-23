@@ -681,16 +681,6 @@ const WelcomeOverlay = ({ onEnter }: { onEnter: () => void }) => {
             →
           </motion.span>
         </motion.button>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="mt-6 text-muted text-sm font-inter flex items-center justify-center gap-2"
-        >
-          <span>🎵</span>
-          <span>Best experienced with sound</span>
-        </motion.p>
       </div>
     </motion.div>
   );

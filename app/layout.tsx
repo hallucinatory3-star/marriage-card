@@ -20,22 +20,27 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
 });
 
+// Wedding details - UPDATE THESE to match your page.tsx
+const groomName = "Groom's Name";
+const brideName = "Bride's Name";
+const weddingDate = "February 15, 2025";
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://example.com"),
-  title: "Wedding Invitation | You're Invited",
-  description: "You're cordially invited to celebrate a beautiful union of love. Join us for our special day!",
-  keywords: ["wedding", "invitation", "celebration", "love", "marriage"],
+  title: `${groomName} & ${brideName} | Wedding Invitation`,
+  description: `You're cordially invited to celebrate the wedding of ${groomName} & ${brideName} on ${weddingDate}. Join us for our special day!`,
+  keywords: ["wedding", "invitation", "celebration", "love", "marriage", groomName, brideName],
   openGraph: {
-    title: "You're Invited to Our Wedding!",
-    description: "Join us in celebrating a beautiful union of love. Tap to open your invitation.",
+    title: `You're Invited to ${groomName} & ${brideName}'s Wedding!`,
+    description: `Join us in celebrating the union of ${groomName} & ${brideName} on ${weddingDate}. Tap to open your invitation.`,
     type: "website",
     siteName: "Wedding Invitation",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "You're Invited to Our Wedding!",
-    description: "Join us in celebrating a beautiful union of love. Tap to open your invitation.",
+    title: `You're Invited to ${groomName} & ${brideName}'s Wedding!`,
+    description: `Join us in celebrating the union of ${groomName} & ${brideName} on ${weddingDate}. Tap to open your invitation.`,
   },
   other: {
     "theme-color": "#d4af37",

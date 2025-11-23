@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = "Wedding Invitation - You're Invited"
+export const alt = "You're Invited to Our Wedding"
 export const size = {
   width: 1200,
   height: 630,
@@ -10,41 +10,112 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function Image() {
+  // Wedding details - UPDATE THESE to match your page.tsx
+  const groomName = "Groom's Name"
+  const brideName = "Bride's Name"
+  const weddingDate = "Saturday, February 15th, 2025"
+
   return new ImageResponse(
     (
       <div
         style={{
-          background: 'linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%)',
+          background: 'linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 50%, #1a1a1a 100%)',
           width: '100%',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
+          fontFamily: 'Georgia, serif',
           position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        {/* Decorative circles */}
+        {/* Background decorative glows */}
         <div
           style={{
             position: 'absolute',
-            top: '10%',
-            left: '10%',
-            width: '300px',
-            height: '300px',
+            top: '-100px',
+            left: '-100px',
+            width: '400px',
+            height: '400px',
+            background: 'radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%)',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%)',
           }}
         />
         <div
           style={{
             position: 'absolute',
-            bottom: '10%',
-            right: '10%',
+            bottom: '-100px',
+            right: '-100px',
             width: '400px',
             height: '400px',
-            borderRadius: '50%',
             background: 'radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%)',
+            borderRadius: '50%',
+          }}
+        />
+
+        {/* Outer border frame */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '25px',
+            left: '25px',
+            right: '25px',
+            bottom: '25px',
+            border: '2px solid rgba(212,175,55,0.4)',
+            borderRadius: '20px',
+            display: 'flex',
+          }}
+        />
+
+        {/* Corner decorations */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '50px',
+            left: '50px',
+            width: '60px',
+            height: '60px',
+            borderTop: '2px solid #d4af37',
+            borderLeft: '2px solid #d4af37',
+            borderTopLeftRadius: '10px',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            top: '50px',
+            right: '50px',
+            width: '60px',
+            height: '60px',
+            borderTop: '2px solid #d4af37',
+            borderRight: '2px solid #d4af37',
+            borderTopRightRadius: '10px',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '50px',
+            left: '50px',
+            width: '60px',
+            height: '60px',
+            borderBottom: '2px solid #d4af37',
+            borderLeft: '2px solid #d4af37',
+            borderBottomLeftRadius: '10px',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '50px',
+            right: '50px',
+            width: '60px',
+            height: '60px',
+            borderBottom: '2px solid #d4af37',
+            borderRight: '2px solid #d4af37',
+            borderBottomRightRadius: '10px',
           }}
         />
 
@@ -53,84 +124,105 @@ export default async function Image() {
           style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            width: '120px',
-            height: '120px',
-            borderRadius: '50%',
-            border: '2px solid rgba(212,175,55,0.5)',
-            marginBottom: '30px',
+            gap: '20px',
+            marginBottom: '15px',
           }}
         >
-          <span style={{ fontSize: '60px' }}>💍</span>
+          <div
+            style={{
+              width: '100px',
+              height: '1px',
+              background: 'linear-gradient(90deg, transparent, #d4af37)',
+            }}
+          />
+          <span style={{ fontSize: '50px' }}>💍</span>
+          <div
+            style={{
+              width: '100px',
+              height: '1px',
+              background: 'linear-gradient(90deg, #d4af37, transparent)',
+            }}
+          />
         </div>
 
-        {/* You're Invited */}
+        {/* You're Invited text */}
         <div
           style={{
-            color: 'rgba(255,255,255,0.6)',
-            fontSize: '24px',
-            letterSpacing: '8px',
+            color: 'rgba(212,175,55,0.9)',
+            fontSize: '22px',
+            letterSpacing: '10px',
             textTransform: 'uppercase',
-            marginBottom: '20px',
+            marginBottom: '25px',
           }}
         >
-          You&apos;re Invited
+          You&apos;re Invited To
         </div>
 
-        {/* Main Title */}
+        {/* Names */}
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '10px',
+            gap: '5px',
           }}
         >
-          <span
+          <div
             style={{
-              fontSize: '72px',
-              fontWeight: 'bold',
+              fontSize: '68px',
               background: 'linear-gradient(135deg, #d4af37 0%, #f5e6c4 50%, #d4af37 100%)',
               backgroundClip: 'text',
               color: 'transparent',
+              fontWeight: '600',
+              lineHeight: '1.1',
             }}
           >
-            Wedding
-          </span>
-          <span
+            {groomName}
+          </div>
+          <div
             style={{
-              fontSize: '72px',
-              fontWeight: 'bold',
+              fontSize: '50px',
+              color: '#d4af37',
+              fontStyle: 'italic',
+              margin: '5px 0',
+            }}
+          >
+            &
+          </div>
+          <div
+            style={{
+              fontSize: '68px',
               background: 'linear-gradient(135deg, #d4af37 0%, #f5e6c4 50%, #d4af37 100%)',
               backgroundClip: 'text',
               color: 'transparent',
+              fontWeight: '600',
+              lineHeight: '1.1',
             }}
           >
-            Celebration
-          </span>
+            {brideName}
+          </div>
         </div>
 
-        {/* Decorative line */}
+        {/* Decorative divider */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '20px',
-            marginTop: '30px',
-            marginBottom: '30px',
+            gap: '15px',
+            margin: '25px 0',
           }}
         >
           <div
             style={{
               width: '80px',
               height: '1px',
-              background: 'linear-gradient(to right, transparent, #d4af37)',
+              background: 'linear-gradient(90deg, transparent, #d4af37)',
             }}
           />
           <div
             style={{
-              width: '12px',
-              height: '12px',
+              width: '10px',
+              height: '10px',
               border: '2px solid #d4af37',
               transform: 'rotate(45deg)',
             }}
@@ -139,7 +231,7 @@ export default async function Image() {
             style={{
               width: '80px',
               height: '1px',
-              background: 'linear-gradient(to left, transparent, #d4af37)',
+              background: 'linear-gradient(90deg, #d4af37, transparent)',
             }}
           />
         </div>
@@ -147,24 +239,36 @@ export default async function Image() {
         {/* Date */}
         <div
           style={{
-            color: 'rgba(255,255,255,0.8)',
+            color: '#f5e6c4',
             fontSize: '28px',
+            fontStyle: 'italic',
           }}
         >
-          Save the Date
+          {weddingDate}
         </div>
 
-        {/* Bottom decoration */}
+        {/* Bottom text */}
         <div
           style={{
             position: 'absolute',
-            bottom: '40px',
-            color: 'rgba(212,175,55,0.6)',
-            fontSize: '16px',
-            letterSpacing: '4px',
+            bottom: '55px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
           }}
         >
-          TAP TO OPEN INVITATION
+          <span style={{ color: 'rgba(212,175,55,0.5)', fontSize: '20px' }}>✨</span>
+          <span
+            style={{
+              color: 'rgba(212,175,55,0.7)',
+              fontSize: '16px',
+              letterSpacing: '4px',
+              textTransform: 'uppercase',
+            }}
+          >
+            Tap to Open Your Invitation
+          </span>
+          <span style={{ color: 'rgba(212,175,55,0.5)', fontSize: '20px' }}>✨</span>
         </div>
       </div>
     ),
