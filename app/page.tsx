@@ -670,8 +670,7 @@ const ShareButton = () => {
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
 
   const shareWhatsApp = () => {
-    const message = ` ${shareUrl}`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/`, "_blank");
   };
 
   const copyLink = async () => {
