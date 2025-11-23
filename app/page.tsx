@@ -540,7 +540,7 @@ END:VCALENDAR`;
 };
 
 // Share Button Component (for footer)
-const ShareButton = ({ eventTitle }: { eventTitle: string }) => {
+const ShareButton = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -555,16 +555,10 @@ const ShareButton = ({ eventTitle }: { eventTitle: string }) => {
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
 
   const shareWhatsApp = () => {
-    const message = `💍 *${eventTitle}*
+    const message = `
 
 ✨ You're Invited! ✨
 
-We would be honored to have you celebrate this special day with us.
-
-📅 Save the Date
-📍 Details in the invitation
-
-👇 *Open Your Invitation*
 ${shareUrl}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank");
   };
@@ -975,7 +969,7 @@ export default function Home() {
               </svg>
             </motion.a>
             {/* Share Button */}
-            <ShareButton eventTitle={`${groomName} & ${brideName}'s Wedding`} />
+            <ShareButton />
           </div>
         </motion.div>
       </footer>
