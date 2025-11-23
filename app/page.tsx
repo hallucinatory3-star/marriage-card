@@ -1,6 +1,11 @@
 "use client";
 
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import confetti from "canvas-confetti";
 
@@ -108,8 +113,8 @@ const PARTICLE_DATA = [
 // Custom hook for window size that satisfies strict lint rules
 function useWindowSize() {
   const getSize = () => ({
-    width: typeof window !== 'undefined' ? window.innerWidth : 1000,
-    height: typeof window !== 'undefined' ? window.innerHeight : 800,
+    width: typeof window !== "undefined" ? window.innerWidth : 1000,
+    height: typeof window !== "undefined" ? window.innerHeight : 800,
   });
 
   const [windowSize, setWindowSize] = useState(getSize);
@@ -122,8 +127,8 @@ function useWindowSize() {
     // Dispatch resize to get initial size on mount
     handleResize();
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return windowSize;
@@ -178,7 +183,9 @@ const CountdownTimer = ({ targetDate }: { targetDate: Date }) => {
       if (distance > 0) {
         setTimeLeft({
           days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          hours: Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          ),
           minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((distance % (1000 * 60)) / 1000),
         });
@@ -213,7 +220,10 @@ const CountdownTimer = ({ targetDate }: { targetDate: Date }) => {
           >
             <motion.div
               className="w-16 h-16 md:w-24 md:h-24 rounded-2xl glass flex items-center justify-center border border-[#d4af37]/30"
-              whileHover={{ scale: 1.05, borderColor: "rgba(212, 175, 55, 0.6)" }}
+              whileHover={{
+                scale: 1.05,
+                borderColor: "rgba(212, 175, 55, 0.6)",
+              }}
             >
               <AnimatePresence mode="wait">
                 <motion.span
@@ -335,8 +345,18 @@ const EventCard = ({
       <div className="space-y-4 mb-6">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center">
-            <svg className="w-5 h-5 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            <svg
+              className="w-5 h-5 text-[#d4af37]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
             </svg>
           </div>
           <div>
@@ -347,8 +367,18 @@ const EventCard = ({
 
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center">
-            <svg className="w-5 h-5 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <svg
+              className="w-5 h-5 text-[#d4af37]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
             </svg>
           </div>
           <div>
@@ -359,9 +389,24 @@ const EventCard = ({
 
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center">
-            <svg className="w-5 h-5 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            <svg
+              className="w-5 h-5 text-[#d4af37]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              />
             </svg>
           </div>
           <div>
@@ -388,20 +433,34 @@ const EventCard = ({
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           onLoad={() => setIsMapLoaded(true)}
-          className={`transition-opacity duration-500 ${isMapLoaded ? "opacity-100" : "opacity-0"}`}
+          className={`transition-opacity duration-500 ${
+            isMapLoaded ? "opacity-100" : "opacity-0"
+          }`}
         />
       </div>
 
       <motion.a
-        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
+        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+          address
+        )}`}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-4 w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full border border-[#d4af37]/30 hover:bg-[#d4af37]/10 transition-all duration-300"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
-        <svg className="w-5 h-5 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+        <svg
+          className="w-5 h-5 text-[#d4af37]"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+          />
         </svg>
         <span className="font-inter text-sm">Get Directions</span>
       </motion.a>
@@ -436,16 +495,25 @@ const SaveTheDateButton = ({
 
   // Format date for calendar
   const formatDateForCalendar = (date: Date) => {
-    return date.toISOString().replace(/-|:|\.\d\d\d/g, "").slice(0, -1);
+    return date
+      .toISOString()
+      .replace(/-|:|\.\d\d\d/g, "")
+      .slice(0, -1);
   };
 
   const startDate = formatDateForCalendar(eventDate);
-  const endDate = formatDateForCalendar(new Date(eventDate.getTime() + 4 * 60 * 60 * 1000));
+  const endDate = formatDateForCalendar(
+    new Date(eventDate.getTime() + 4 * 60 * 60 * 1000)
+  );
   const eventDescription = `You're invited to celebrate with us!`;
   const eventLocation = "Wedding Venue";
 
   // Google Calendar URL
-  const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}`;
+  const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+    eventTitle
+  )}&dates=${startDate}/${endDate}&details=${encodeURIComponent(
+    eventDescription
+  )}&location=${encodeURIComponent(eventLocation)}`;
 
   // Generate ICS file
   const generateICS = () => {
@@ -478,17 +546,44 @@ END:VCALENDAR`;
     >
       <div className="relative">
         <motion.button
-          onClick={(e) => { e.stopPropagation(); setShowOptions(!showOptions); }}
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowOptions(!showOptions);
+          }}
           className="px-8 py-4 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/40 hover:bg-[#d4af37]/20 hover:border-[#d4af37] transition-all duration-300 flex items-center gap-3"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          <svg className="w-5 h-5 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          <svg
+            className="w-5 h-5 text-[#d4af37]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+            />
           </svg>
-          <span className="font-playfair text-lg gradient-text">Save the Date</span>
-          <svg className={`w-4 h-4 text-[#d4af37] transition-transform ${showOptions ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          <span className="font-playfair text-lg gradient-text">
+            Save the Date
+          </span>
+          <svg
+            className={`w-4 h-4 text-[#d4af37] transition-transform ${
+              showOptions ? "rotate-180" : ""
+            }`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
         </motion.button>
 
@@ -509,25 +604,45 @@ END:VCALENDAR`;
                 onClick={() => setShowOptions(false)}
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="#d4af37">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
                 </svg>
                 <span className="text-sm">Google Calendar</span>
               </a>
               <button
-                onClick={() => { generateICS(); setShowOptions(false); }}
+                onClick={() => {
+                  generateICS();
+                  setShowOptions(false);
+                }}
                 className="flex items-center gap-3 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors w-full"
               >
-                <svg className="w-5 h-5 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                <svg
+                  className="w-5 h-5 text-[#d4af37]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                  />
                 </svg>
                 <span className="text-sm">Apple Calendar</span>
               </button>
               <button
-                onClick={() => { generateICS(); setShowOptions(false); }}
+                onClick={() => {
+                  generateICS();
+                  setShowOptions(false);
+                }}
                 className="flex items-center gap-3 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors w-full"
               >
-                <svg className="w-5 h-5 text-[#d4af37]" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M21 5H3a2 2 0 00-2 2v10a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2zm-9 10a4 4 0 110-8 4 4 0 010 8z"/>
+                <svg
+                  className="w-5 h-5 text-[#d4af37]"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M21 5H3a2 2 0 00-2 2v10a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2zm-9 10a4 4 0 110-8 4 4 0 010 8z" />
                 </svg>
                 <span className="text-sm">Outlook</span>
               </button>
@@ -555,11 +670,7 @@ const ShareButton = () => {
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
 
   const shareWhatsApp = () => {
-    const message = `
-
-✨ You're Invited! ✨
-
-${shareUrl}`;
+    const message = ` ${shareUrl}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank");
   };
 
@@ -572,12 +683,25 @@ ${shareUrl}`;
   return (
     <div className="relative">
       <motion.button
-        onClick={(e) => { e.stopPropagation(); setShowOptions(!showOptions); }}
+        onClick={(e) => {
+          e.stopPropagation();
+          setShowOptions(!showOptions);
+        }}
         whileHover={{ scale: 1.1, color: "#d4af37" }}
         className="text-muted transition-colors"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+          />
         </svg>
       </motion.button>
 
@@ -590,22 +714,44 @@ ${shareUrl}`;
             className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-44 rounded-xl border border-[#d4af37]/30 overflow-hidden z-100 bg-background shadow-xl shadow-black/20"
           >
             <button
-              onClick={() => { shareWhatsApp(); setShowOptions(false); }}
+              onClick={() => {
+                shareWhatsApp();
+                setShowOptions(false);
+              }}
               className="flex items-center gap-3 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors w-full"
             >
-              <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              <svg
+                className="w-5 h-5 text-green-500"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
               </svg>
               <span className="text-sm">WhatsApp</span>
             </button>
             <button
-              onClick={() => { copyLink(); setShowOptions(false); }}
+              onClick={() => {
+                copyLink();
+                setShowOptions(false);
+              }}
               className="flex items-center gap-3 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors w-full"
             >
-              <svg className="w-5 h-5 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              <svg
+                className="w-5 h-5 text-[#d4af37]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                />
               </svg>
-              <span className="text-sm">{copied ? "Copied!" : "Copy Link"}</span>
+              <span className="text-sm">
+                {copied ? "Copied!" : "Copy Link"}
+              </span>
             </button>
           </motion.div>
         )}
@@ -691,12 +837,12 @@ export default function Home() {
   // Lock body scroll when welcome overlay is shown
   useEffect(() => {
     if (showWelcome) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [showWelcome]);
 
@@ -779,7 +925,9 @@ export default function Home() {
               transition={{ delay: 0.8, type: "spring" }}
               className="my-4 md:my-6"
             >
-              <span className="text-4xl md:text-6xl text-[#d4af37] font-cormorant">&amp;</span>
+              <span className="text-4xl md:text-6xl text-[#d4af37] font-cormorant">
+                &amp;
+              </span>
             </motion.div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair gradient-text leading-tight">
               {brideName}
@@ -877,10 +1025,12 @@ export default function Home() {
               </motion.div>
             </div>
             <p className="text-center text-lg md:text-xl font-cormorant leading-relaxed text-foreground">
-              &ldquo;Every love story is beautiful, but ours is my favorite. From the moment we met,
-              we knew that something magical was beginning. Through laughter and tears, through
-              challenges and triumphs, our love has only grown stronger. Now, we invite you to
-              celebrate with us as we begin the next chapter of our journey together.&rdquo;
+              &ldquo;Every love story is beautiful, but ours is my favorite.
+              From the moment we met, we knew that something magical was
+              beginning. Through laughter and tears, through challenges and
+              triumphs, our love has only grown stronger. Now, we invite you to
+              celebrate with us as we begin the next chapter of our journey
+              together.&rdquo;
             </p>
           </motion.div>
         </div>
@@ -927,7 +1077,10 @@ export default function Home() {
           </div>
 
           {/* Save the Date Button */}
-          <SaveTheDateButton eventDate={weddingDate} eventTitle={`${groomName} & ${brideName}'s Wedding`} />
+          <SaveTheDateButton
+            eventDate={weddingDate}
+            eventTitle={`${groomName} & ${brideName}'s Wedding`}
+          />
         </div>
       </section>
 
@@ -978,7 +1131,11 @@ export default function Home() {
       <ThemeToggle />
 
       {/* Music Player */}
-      <MusicPlayer audioRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+      <MusicPlayer
+        audioRef={audioRef}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+      />
     </div>
   );
 }
@@ -1018,7 +1175,12 @@ const ThemeToggle = () => {
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            />
           </motion.svg>
         ) : (
           <motion.svg
@@ -1031,7 +1193,12 @@ const ThemeToggle = () => {
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
           </motion.svg>
         )}
       </AnimatePresence>
@@ -1043,7 +1210,7 @@ const ThemeToggle = () => {
 const MusicPlayer = ({
   audioRef,
   isPlaying,
-  setIsPlaying
+  setIsPlaying,
 }: {
   audioRef: React.MutableRefObject<HTMLAudioElement | null>;
   isPlaying: boolean;
