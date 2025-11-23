@@ -670,18 +670,7 @@ const ShareButton = () => {
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
 
   const shareWhatsApp = () => {
-    const message = `💍*
-
-✨ You're Invited! ✨
-
-We would be honored to have you celebrate this special day with us.
-
-📅 Save the Date
-📍 Details in the invitation
-
-👇 *Open Your Invitation*
-${shareUrl}`;
-    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, "_blank");
+    
   };
 
   const copyLink = async () => {
