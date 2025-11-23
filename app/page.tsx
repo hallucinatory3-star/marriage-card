@@ -670,7 +670,11 @@ const ShareButton = () => {
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
 
   const shareWhatsApp = () => {
-    
+    const message = `${shareUrl}`;
+    window.open(
+      `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
   };
 
   const copyLink = async () => {
