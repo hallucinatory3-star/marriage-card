@@ -871,9 +871,9 @@ export default function Home() {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   // Wedding details - UPDATE THESE
-  const weddingDate = new Date("2025-02-15T10:00:00");
-  const groomName = "Groom's Name";
-  const brideName = "Bride's Name";
+  const weddingDate = new Date("2026-02-03T10:00:00");
+  const groomName = "Vikram";
+  const brideName = "Shagun";
 
   return (
     <div ref={containerRef} className="min-h-screen bg-background relative">
@@ -1100,7 +1100,12 @@ export default function Home() {
             {groomName} & {brideName}
           </h2>
           <p className="text-muted font-cormorant text-xl mb-4">
-            February 15, 2025
+            {weddingDate.toLocaleDateString("en-US", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
           </p>
           <p className="text-muted text-sm font-inter">
             Made with ❤️ for a beautiful celebration
