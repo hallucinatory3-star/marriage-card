@@ -20,9 +20,9 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
 });
 
-const groomName = "Groom's Name";
-const brideName = "Bride's Name";
-const weddingDate = "February 15, 2025";
+const weddingDate = new Date("2026-02-04T19:00:00");
+const groomName = "Vikram";
+const brideName = "Shagun";
 
 // UPDATE THIS to your actual Vercel URL
 const siteUrl = "https://marriage-card-nine.vercel.app";
@@ -31,7 +31,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: `${groomName} & ${brideName} | Wedding Invitation`,
   description: `You're cordially invited to celebrate the wedding of ${groomName} & ${brideName} on ${weddingDate}. Join us for our special day!`,
-  keywords: ["wedding", "invitation", "celebration", "love", "marriage", groomName, brideName],
+  keywords: [
+    "wedding",
+    "invitation",
+    "celebration",
+    "love",
+    "marriage",
+    groomName,
+    brideName,
+  ],
   openGraph: {
     title: `You're Invited to ${groomName} & ${brideName}'s Wedding!`,
     description: `Join us in celebrating the union of ${groomName} & ${brideName} on ${weddingDate}. Tap to open your invitation.`,

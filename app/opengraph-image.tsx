@@ -11,9 +11,9 @@ export const contentType = 'image/png'
 
 export default async function Image() {
   // Wedding details - UPDATE THESE to match your page.tsx
-  const groomName = "Groom's Name"
-  const brideName = "Bride's Name"
-  const weddingDate = "Saturday, February 15th, 2025"
+  const weddingDate = new Date("2026-02-04T19:00:00");
+  const groomName = "Vikram";
+  const brideName = "Shagun";
 
   return new ImageResponse(
     (
@@ -287,7 +287,7 @@ export default async function Image() {
             fontStyle: 'italic',
           }}
         >
-          {weddingDate}
+          {weddingDate.toLocaleDateString()}
         </div>
 
         {/* Bottom text */}
