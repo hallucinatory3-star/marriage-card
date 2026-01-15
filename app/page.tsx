@@ -361,7 +361,7 @@ const CountdownTimer = ({ targetDate }: { targetDate: Date }) => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
-                  className="text-2xl md:text-4xl font-bold gradient-text font-playfair"
+                  className="text-2xl md:text-4xl font-bold text-[#d4af37] font-playfair"
                 >
                   {String(block.value).padStart(2, "0")}
                 </motion.span>
@@ -383,7 +383,7 @@ const CountdownTimer = ({ targetDate }: { targetDate: Date }) => {
             className="mt-8 text-center"
           >
             <motion.p
-              className="text-2xl md:text-4xl font-playfair gradient-text"
+              className="text-2xl md:text-4xl font-playfair text-[#d4af37]"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ repeat: Infinity, duration: 2 }}
             >
@@ -462,7 +462,7 @@ const EventCard = ({
       className="glass rounded-3xl p-6 md:p-8 border border-[#d4af37]/20 hover:border-[#d4af37]/40 transition-all duration-500"
     >
       <motion.h3
-        className="text-2xl md:text-3xl font-playfair gradient-text mb-6 text-center"
+        className="text-2xl md:text-3xl font-playfair text-[#d4af37] mb-6 text-center"
         whileHover={{ scale: 1.02 }}
       >
         {title}
@@ -567,7 +567,7 @@ const VenueMap = ({
       className="glass rounded-3xl p-6 md:p-8 border border-[#d4af37]/20"
     >
       <motion.h3
-        className="text-2xl md:text-3xl font-playfair gradient-text mb-4 text-center"
+        className="text-2xl md:text-3xl font-playfair text-[#d4af37] mb-4 text-center"
         whileHover={{ scale: 1.02 }}
       >
         Venue Location
@@ -753,7 +753,7 @@ END:VCALENDAR`;
               d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
             />
           </svg>
-          <span className="font-playfair text-lg gradient-text">
+          <span className="font-playfair text-lg text-[#d4af37]">
             Save the Date
           </span>
           <svg
@@ -995,7 +995,7 @@ const WelcomeOverlay = ({ onEnter }: { onEnter: () => void }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="text-4xl md:text-6xl font-playfair gradient-text mb-8"
+          className="text-4xl md:text-6xl font-playfair text-[#d4af37] mb-8"
         >
           Wedding Celebration
         </motion.h1>
@@ -1087,10 +1087,10 @@ export default function Home() {
         {/* Ambient Gold Glow */}
         <motion.div
           style={{ y: backgroundY }}
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-20"
         >
-          <div className="absolute top-1/4 left-1/4 w-96 h-112 bg-[#d4af37] rounded-full blur-[180px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-md h-112 bg-[#d4af37] rounded-full blur-[180px]" />
+          <div className="absolute top-1/6 left-1/4 w-md h-80 bg-[#d4af37] rounded-full blur-[180px]" />
+          <div className="absolute top-1/6 right-1/4 w-md h-80 bg-[#d4af37] rounded-full blur-[180px]" />
         </motion.div>
 
         <BackgroundAccessories />
@@ -1165,7 +1165,7 @@ export default function Home() {
           {/* Names */}
           <div className="my-6 space-y-6">
             <p
-              className="font-playfair gradient-text font-bold tracking-wide"
+              className="font-playfair text-[#d4af37] font-bold tracking-wide"
               style={{ fontSize: "var(--fs-name)" }}
             >
               {groomName}
@@ -1176,7 +1176,7 @@ export default function Home() {
             </p>
 
             <p
-              className="font-playfair gradient-text font-bold tracking-wide"
+              className="font-playfair text-[#d4af37] font-bold tracking-wide"
               style={{ fontSize: "var(--fs-name)" }}
             >
               {brideName}
@@ -1248,7 +1248,7 @@ export default function Home() {
                 ⸻
               </p>
             </motion.div>
-            <h2 className="text-3xl md:text-5xl font-playfair gradient-text mb-4">
+            <h2 className="text-3xl md:text-5xl font-playfair text-[#d4af37] mb-4">
               Wedding Festivities
             </h2>
           </motion.div>
@@ -1375,7 +1375,7 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="mb-6 flex flex-wrap items-center justify-center gap-3 md:gap-4"
           >
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-playfair gradient-text leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-playfair text-[#d4af37] leading-tight">
               {groomName}
             </h2>
             <motion.span
@@ -1387,7 +1387,7 @@ export default function Home() {
             >
               &amp;
             </motion.span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-playfair gradient-text leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-playfair text-[#d4af37] leading-tight">
               {brideName}
             </h2>
           </motion.div>
