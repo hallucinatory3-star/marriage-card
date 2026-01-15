@@ -1187,7 +1187,7 @@ export default function Home() {
               beloved daughter of
             </p>
             <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground leading-relaxed">
-              <span className="text-2xl md:text-3xl lg:text-4xl font-cormorant text-foreground font-semibold"><span className="whitespace-nowrap">Smt. Madhu Dubey</span> & <span className="whitespace-nowrap">Sh. Desh Ratan Dubey</span></span>
+              <span className="text-2xl md:text-3xl lg:text-4xl font-cormorant text-foreground font-semibold"><span className="whitespace-nowrap">Smt. Madhu Bala Dubey</span> & <span className="whitespace-nowrap">Sh. Desh Rattan Dubey</span></span>
             </p>
           </motion.div>
 
@@ -1261,7 +1261,7 @@ export default function Home() {
               delay={0}
             />
             <EventCard
-              title="Haldi (Sanat) Ceremony & Lunch"
+              title="Haldi (Saant) Ceremony & Lunch"
               date="4th February 2026"
               time="11:00 AM"
               venue="Sahib Guest House"
