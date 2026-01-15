@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import confetti from "canvas-confetti";
+import Image from "next/image";
 
 // Confetti burst function with wedding theme colors
 const fireConfetti = () => {
@@ -177,7 +178,11 @@ const FloatingParticles = () => {
             animate={{
               y: [null, -100, windowSize.height + 100],
               x: [null, particle.animateX],
-              rotate: [null, particle.animateX * 3 + i * 45, particle.animateX * 6 + i * 45],
+              rotate: [
+                null,
+                particle.animateX * 3 + i * 45,
+                particle.animateX * 6 + i * 45,
+              ],
               opacity: [0.15, 0.4, 0],
             }}
             transition={{
@@ -187,11 +192,7 @@ const FloatingParticles = () => {
               ease: "easeInOut",
             }}
           >
-            <svg
-              viewBox="0 0 24 24"
-              className="w-full h-full"
-              fill="none"
-            >
+            <svg viewBox="0 0 24 24" className="w-full h-full" fill="none">
               {/* Rose petal shape - more rounded and petal-like */}
               <path
                 d="M12 2 C10 3, 8.5 5, 8 7.5 C7.5 10, 8 12.5, 9.5 14.5 C10.5 15.5, 11.5 16, 12 16 C12.5 16, 13.5 15.5, 14.5 14.5 C16 12.5, 16.5 10, 16 7.5 C15.5 5, 14 3, 12 2 Z"
@@ -266,7 +267,7 @@ const BackgroundAccessories = () => (
       <path d="M50 200 Q200 100, 350 200" opacity="0.4" />
       <path d="M100 250 Q200 150, 300 250" opacity="0.3" />
     </svg>
-    
+
     {/* Left side soft curve */}
     <svg
       className="absolute left-10 top-1/3 w-64 h-64 hidden lg:block"
@@ -278,7 +279,7 @@ const BackgroundAccessories = () => (
     >
       <path d="M0 100 Q50 50, 100 80 T200 100" opacity="0.3" />
     </svg>
-    
+
     {/* Right side subtle curve */}
     <svg
       className="absolute right-10 bottom-1/4 w-56 h-56 hidden lg:block"
@@ -571,7 +572,7 @@ const VenueMap = ({
       >
         Venue Location
       </motion.h3>
-      
+
       <div className="flex items-center gap-3 mb-6 justify-center">
         <div className="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center">
           <svg
@@ -595,7 +596,9 @@ const VenueMap = ({
           </svg>
         </div>
         <div className="text-center">
-          <p className="font-cormorant text-lg md:text-xl font-semibold">{venue}</p>
+          <p className="font-cormorant text-lg md:text-xl font-semibold">
+            {venue}
+          </p>
           <p className="text-sm text-muted">{address}</p>
         </div>
       </div>
@@ -969,7 +972,13 @@ const WelcomeOverlay = ({ onEnter }: { onEnter: () => void }) => {
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             className="w-24 h-24 rounded-full border border-dashed border-[#d4af37]/30 flex items-center justify-center"
           >
-            <span className="text-5xl">💍</span>
+            <Image
+              src="/heart.webp"
+              alt="Heart"
+              width={60}
+              height={60}
+              className="object-contain"
+            />
           </motion.div>
         </motion.div>
 
@@ -1074,130 +1083,121 @@ export default function Home() {
       <FloatingParticles />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-8 md:py-12">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden md:py-16">
+        {/* Ambient Gold Glow */}
         <motion.div
           style={{ y: backgroundY }}
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-30"
         >
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#d4af37] rounded-full blur-[150px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#d4af37] rounded-full blur-[150px]" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-112 bg-[#d4af37] rounded-full blur-[180px]" />
+          <div className="absolute bottom-1/4 right-1/4 w-md h-112 bg-[#d4af37] rounded-full blur-[180px]" />
         </motion.div>
-        
-        {/* Modern Corner Decorations */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2, delay: 0.5 }}
-          className="absolute inset-0 pointer-events-none z-0"
-        >
-          <div className="absolute top-0 left-0 w-48 h-48 md:w-72 md:h-72 overflow-visible">
-            <svg
-              viewBox="0 0 200 200"
-              className="w-full h-full"
-              fill="none"
-              stroke="#d4af37"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              opacity="0.25"
-            >
-              <path d="M0 40 Q30 20, 60 35 T120 50 T180 40" />
-              <path d="M20 0 Q0 30, 25 60" />
-              <path d="M0 100 Q40 80, 80 95" />
-            </svg>
-          </div>
-          <div className="absolute bottom-0 right-0 w-48 h-48 md:w-72 md:h-72 overflow-visible">
-            <svg
-              viewBox="0 0 200 200"
-              className="w-full h-full"
-              fill="none"
-              stroke="#d4af37"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              opacity="0.25"
-            >
-              <path d="M200 160 Q170 180, 140 165 T80 150 T20 160" />
-              <path d="M180 200 Q200 170, 175 140" />
-              <path d="M200 100 Q160 120, 120 105" />
-            </svg>
-          </div>
-        </motion.div>
-        
-        {/* Subtle Background Accessories */}
-        <BackgroundAccessories />
-        
 
-        {/* Content */}
+        <BackgroundAccessories />
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="relative z-10 text-center max-w-4xl mx-auto w-full px-4 md:px-6"
+          className="relative z-10 max-w-4xl w-full text-center"
         >
-          {/* Sanskrit Verse at top */}
+          {/* Sacred Verse */}
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl font-playfair text-[#d4af37]/70 mb-6 mt-4 md:mt-8 leading-relaxed"
+            className="mb-5 font-playfair text-[#d4af37]/80 leading-relaxed tracking-wide"
+            style={{ fontSize: "var(--fs-sacred)" }}
           >
-            वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br />
+            वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।
+            <br />
             निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
           </motion.p>
 
-
-          {/* Invitation Text */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9 }}
-            className="mb-8 space-y-4"
-          >
-            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground leading-relaxed">
+          {/* Narrative */}
+          <div className="">
+            <p
+              className="font-cormorant text-foreground leading-relaxed"
+              style={{ fontSize: "var(--fs-body)" }}
+            >
               With the divine blessings of Lord Ganesha,
             </p>
-            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground leading-relaxed">
-              and the loving remembrance and blessings of our revered grandparents:
+
+            <p
+              className="font-cormorant text-foreground leading-relaxed"
+              style={{ fontSize: "var(--fs-body)" }}
+            >
+              and the loving remembrance of our revered grandparents
             </p>
-            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-muted leading-relaxed">
-              <span className="text-2xl md:text-3xl lg:text-4xl font-cormorant text-foreground font-semibold inline-block"><span className="whitespace-nowrap">Lt. Smt. Ram Devi</span> &<br />
-              <span className="whitespace-nowrap">Lt. Sh. Bhoop Ram Shan.</span></span>
+
+            <p
+              className="font-cormorant text-muted leading-relaxed"
+              style={{ fontSize: "var(--fs-lead)" }}
+            >
+              <span className="font-semibold text-foreground whitespace-nowrap">
+                Late Smt. Ram Devi
+              </span>
+              <br />
+              <span className="font-semibold text-foreground whitespace-nowrap">
+                Late Sh. Bhoop Ram Shan
+              </span>
             </p>
-            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground leading-relaxed mt-6">
-              <span className="text-2xl md:text-3xl lg:text-4xl font-cormorant text-foreground font-semibold"><span className="whitespace-nowrap">Mrs. Koshaliya Devi</span> & <span className="whitespace-nowrap">Mr. Chamail Singh</span></span>
+
+            <p
+              className="pt-4 font-cormorant text-foreground leading-relaxed"
+              style={{ fontSize: "var(--fs-body)" }}
+            >
+              <span className="font-semibold text-foreground">
+                Mrs. Koshaliya Devi & Mr. Chamail Singh
+              </span>
               <br />
               cordially invite you and your esteemed family
             </p>
-            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground leading-relaxed">
-              to grace the auspicious wedding ceremony of our beloved son
-            </p>
-            <div className="my-10 py-6">
-              <p className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-playfair gradient-text mb-6 font-bold tracking-wide whitespace-nowrap">
-                {groomName}
-              </p>
-              <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground mb-6">
-                with
-              </p>
-              <p className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-playfair gradient-text mb-6 font-bold tracking-wide whitespace-nowrap">
-                {brideName}
-              </p>
-            </div>
-            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-muted leading-relaxed">
-              beloved daughter of
-            </p>
-            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground leading-relaxed">
-              <span className="text-2xl md:text-3xl lg:text-4xl font-cormorant text-foreground font-semibold"><span className="whitespace-nowrap">Smt. Madhu Bala Dubey</span> & <span className="whitespace-nowrap">Sh. Desh Rattan Dubey</span></span>
-            </p>
-          </motion.div>
 
+            <p
+              className="font-cormorant text-foreground leading-relaxed"
+              style={{ fontSize: "var(--fs-body)" }}
+            >
+              to grace the auspicious wedding ceremony of their beloved son
+            </p>
+          </div>
+
+          {/* Names */}
+          <div className="my-6 space-y-6">
+            <p
+              className="font-playfair gradient-text font-bold tracking-wide"
+              style={{ fontSize: "var(--fs-name)" }}
+            >
+              {groomName}
+            </p>
+
+            <p className="font-cormorant text-muted tracking-widest uppercase text-sm">
+              with
+            </p>
+
+            <p
+              className="font-playfair gradient-text font-bold tracking-wide"
+              style={{ fontSize: "var(--fs-name)" }}
+            >
+              {brideName}
+            </p>
+          </div>
+
+          {/* Bride Parents */}
+          <p
+            className="pt-4 font-cormorant text-foreground leading-relaxed"
+            style={{ fontSize: "var(--fs-body)" }}
+          >
+            beloved daughter of <br />
+            <span className="font-semibold text-foreground">
+              Smt. Madhu Bala Dubey & Sh. Desh Rattan Dubey
+            </span>
+          </p>
         </motion.div>
       </section>
 
-      <div className="section-divider max-w-2xl mx-auto" />
-
       {/* Countdown Section */}
-      <section className="py-20 md:py-32 px-4 relative">
+      <section className="p-4 relative">
         <div className="max-w-4xl mx-auto text-center">
           <CountdownTimer targetDate={weddingDate} />
         </div>
@@ -1206,7 +1206,7 @@ export default function Home() {
       <div className="section-divider max-w-2xl mx-auto" />
 
       {/* Events Section */}
-      <section className="py-20 md:py-32 px-4 relative">
+      <section className="px-4 relative">
         {/* Subtle Corner Decorations */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -1244,7 +1244,9 @@ export default function Home() {
               viewport={{ once: true }}
               className="mb-8"
             >
-              <p className="text-2xl md:text-3xl text-[#d4af37] font-cormorant">⸻</p>
+              <p className="text-2xl md:text-3xl text-[#d4af37] font-cormorant">
+                ⸻
+              </p>
             </motion.div>
             <h2 className="text-3xl md:text-5xl font-playfair gradient-text mb-4">
               Wedding Festivities
@@ -1297,7 +1299,6 @@ export default function Home() {
               View Parking Location
             </a>
           </motion.div>
-
         </div>
       </section>
 
@@ -1308,7 +1309,7 @@ export default function Home() {
           <div className="absolute top-0 left-1/4 w-64 h-64 bg-[#d4af37] rounded-full blur-[100px]" />
           <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-[#8B0000] rounded-full blur-[100px]" />
         </div>
-        
+
         {/* Modern Corner Decorations */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -1348,10 +1349,9 @@ export default function Home() {
             </svg>
           </div>
         </motion.div>
-        
+
         {/* Subtle Background Accessories */}
         <BackgroundAccessories />
-        
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -1404,7 +1404,7 @@ export default function Home() {
               Your gracious presence and heartfelt blessings
             </p>
             <p className="text-lg md:text-xl font-cormorant text-foreground leading-relaxed">
-              will add joy, warmth, and meaning to this sacred union.
+              will add joy, warmth, and meaning to our celebration.
             </p>
           </motion.div>
 
@@ -1652,4 +1652,3 @@ const MusicPlayer = ({
     </motion.button>
   );
 };
-

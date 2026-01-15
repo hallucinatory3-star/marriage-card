@@ -117,32 +117,6 @@ export default async function Image() {
           }}
         />
 
-        {/* Ring icon */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '20px',
-            marginBottom: '15px',
-          }}
-        >
-          <div
-            style={{
-              width: '100px',
-              height: '1px',
-              background: 'linear-gradient(90deg, transparent, #d4af37)',
-            }}
-          />
-          <span style={{ fontSize: '50px' }}>💍</span>
-          <div
-            style={{
-              width: '100px',
-              height: '1px',
-              background: 'linear-gradient(90deg, #d4af37, transparent)',
-            }}
-          />
-        </div>
-
         {/* You're Invited text */}
         <div
           style={{

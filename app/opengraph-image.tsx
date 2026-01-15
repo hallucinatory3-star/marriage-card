@@ -146,44 +146,6 @@ export default async function Image() {
           }}
         />
 
-        {/* Top decorative element with ring */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '20px',
-            marginBottom: '15px',
-          }}
-        >
-          <div
-            style={{
-              width: '100px',
-              height: '1px',
-              background: 'linear-gradient(90deg, transparent, #d4af37)',
-            }}
-          />
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '80px',
-              height: '80px',
-              borderRadius: '50%',
-              border: '2px solid rgba(212,175,55,0.5)',
-            }}
-          >
-            <span style={{ fontSize: '40px' }}>💍</span>
-          </div>
-          <div
-            style={{
-              width: '100px',
-              height: '1px',
-              background: 'linear-gradient(90deg, #d4af37, transparent)',
-            }}
-          />
-        </div>
-
         {/* You're Invited text */}
         <div
           style={{
