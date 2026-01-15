@@ -10,10 +10,8 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function Image() {
-  // Wedding details - UPDATE THESE to match your page.tsx
-  const weddingDate = new Date("2026-02-04T19:00:00");
-  const groomName = "Vikram";
-  const brideName = "Shagun";
+  // Wedding details
+  const weddingDate = new Date("2026-02-03T12:00:00");
 
   return new ImageResponse(
     (
@@ -199,51 +197,20 @@ export default async function Image() {
           You&apos;re Invited To
         </div>
 
-        {/* Names */}
+        {/* Wedding Celebration Text */}
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '5px',
+            fontSize: '56px',
+            background: 'linear-gradient(135deg, #d4af37 0%, #f5e6c4 50%, #d4af37 100%)',
+            backgroundClip: 'text',
+            color: 'transparent',
+            fontWeight: '600',
+            lineHeight: '1.1',
+            textShadow: '0 0 40px rgba(212,175,55,0.3)',
+            textAlign: 'center',
           }}
         >
-          <div
-            style={{
-              fontSize: '68px',
-              background: 'linear-gradient(135deg, #d4af37 0%, #f5e6c4 50%, #d4af37 100%)',
-              backgroundClip: 'text',
-              color: 'transparent',
-              fontWeight: '600',
-              lineHeight: '1.1',
-              textShadow: '0 0 40px rgba(212,175,55,0.3)',
-            }}
-          >
-            {groomName}
-          </div>
-          <div
-            style={{
-              fontSize: '50px',
-              color: '#d4af37',
-              fontStyle: 'italic',
-              margin: '5px 0',
-            }}
-          >
-            &
-          </div>
-          <div
-            style={{
-              fontSize: '68px',
-              background: 'linear-gradient(135deg, #d4af37 0%, #f5e6c4 50%, #d4af37 100%)',
-              backgroundClip: 'text',
-              color: 'transparent',
-              fontWeight: '600',
-              lineHeight: '1.1',
-              textShadow: '0 0 40px rgba(212,175,55,0.3)',
-            }}
-          >
-            {brideName}
-          </div>
+          Wedding Celebration
         </div>
 
         {/* Decorative divider */}

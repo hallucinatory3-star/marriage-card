@@ -20,29 +20,27 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
 });
 
-const weddingDate = new Date("2026-02-04T19:00:00");
-const groomName = "Vikram";
-const brideName = "Shagun";
+const weddingDate = new Date("2026-02-03T12:00:00");
 
 // UPDATE THIS to your actual Vercel URL
 const siteUrl = "https://marriage-card-nine.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: `${groomName} & ${brideName} | Wedding Invitation`,
-  description: `You're cordially invited to celebrate the wedding of ${groomName} & ${brideName} on ${weddingDate}. Join us for our special day!`,
+  title: "Wedding Invitation | Celebration of Love",
+  description: `You're cordially invited to celebrate a special wedding ceremony. Join us for this joyous occasion filled with love, blessings, and celebration.`,
   keywords: [
     "wedding",
     "invitation",
     "celebration",
     "love",
     "marriage",
-    groomName,
-    brideName,
+    "ceremony",
+    "festivities",
   ],
   openGraph: {
-    title: `You're Invited to ${groomName} & ${brideName}'s Wedding!`,
-    description: `Join us in celebrating the union of ${groomName} & ${brideName} on ${weddingDate}. Tap to open your invitation.`,
+    title: "You're Invited to a Wedding Celebration!",
+    description: `Join us in the celebration filled with love and blessings. Tap to open your invitation.`,
     type: "website",
     siteName: "Wedding Invitation",
     locale: "en_US",
@@ -52,14 +50,14 @@ export const metadata: Metadata = {
         url: `${siteUrl}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: `${groomName} & ${brideName}'s Wedding Invitation`,
+        alt: "Wedding Invitation",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `You're Invited to ${groomName} & ${brideName}'s Wedding!`,
-    description: `Join us in celebrating the union of ${groomName} & ${brideName} on ${weddingDate}. Tap to open your invitation.`,
+    title: "You're Invited to a Wedding Celebration!",
+    description: `Join us in the celebration filled with love and blessings. Tap to open your invitation.`,
     images: [`${siteUrl}/twitter-image`],
   },
   other: {

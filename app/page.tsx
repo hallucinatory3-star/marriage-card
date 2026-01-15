@@ -134,35 +134,164 @@ function useWindowSize() {
   return windowSize;
 }
 
-// Floating particles component
+// Floating rose petals component
 const FloatingParticles = () => {
   const windowSize = useWindowSize();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
+  // Rose petal colors - mix of gold and real rose colors
+  const petalColors = [
+    { outer: "#d4af37", inner: "#d4af37" }, // Gold
+    { outer: "#FF69B4", inner: "#FFB6C1" }, // Hot Pink / Light Pink
+    { outer: "#DC143C", inner: "#FF69B4" }, // Crimson / Hot Pink
+    { outer: "#C71585", inner: "#FF1493" }, // Medium Violet Red / Deep Pink
+    { outer: "#FF1493", inner: "#FFB6C1" }, // Deep Pink / Light Pink
+    { outer: "#d4af37", inner: "#f5e6c4" }, // Gold / Light Gold
+  ];
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {PARTICLE_DATA.map((particle, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-[#d4af37] rounded-full opacity-40"
-          initial={{
-            x: particle.initialX * windowSize.width,
-            y: particle.initialY * windowSize.height,
-          }}
-          animate={{
-            y: [null, -100, windowSize.height + 100],
-            x: [null, particle.animateX],
-            opacity: [0.4, 0.8, 0],
-          }}
-          transition={{
-            duration: particle.duration,
-            repeat: Infinity,
-            delay: particle.delay,
-          }}
-        />
-      ))}
+      {PARTICLE_DATA.map((particle, i) => {
+        const colorSet = petalColors[i % petalColors.length];
+        return (
+          <motion.div
+            key={i}
+            className="absolute"
+            style={{
+              width: "14px",
+              height: "14px",
+            }}
+            initial={{
+              x: particle.initialX * windowSize.width,
+              y: particle.initialY * windowSize.height,
+              rotate: i * 45,
+            }}
+            animate={{
+              y: [null, -100, windowSize.height + 100],
+              x: [null, particle.animateX],
+              rotate: [null, particle.animateX * 3 + i * 45, particle.animateX * 6 + i * 45],
+              opacity: [0.15, 0.4, 0],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              delay: particle.delay,
+              ease: "easeInOut",
+            }}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              className="w-full h-full"
+              fill="none"
+            >
+              {/* Rose petal shape - more rounded and petal-like */}
+              <path
+                d="M12 2 C10 3, 8.5 5, 8 7.5 C7.5 10, 8 12.5, 9.5 14.5 C10.5 15.5, 11.5 16, 12 16 C12.5 16, 13.5 15.5, 14.5 14.5 C16 12.5, 16.5 10, 16 7.5 C15.5 5, 14 3, 12 2 Z"
+                fill={colorSet.outer}
+                opacity="0.6"
+              />
+              <path
+                d="M12 3 C10.5 3.8, 9.5 5.5, 9 7.5 C8.7 9, 9 11, 10 12.5 C10.7 13.3, 11.3 13.7, 12 13.7 C12.7 13.7, 13.3 13.3, 14 12.5 C15 11, 15.3 9, 15 7.5 C14.5 5.5, 13.5 3.8, 12 3 Z"
+                fill={colorSet.inner}
+                opacity="0.4"
+              />
+            </svg>
+          </motion.div>
+        );
+      })}
     </div>
   );
 };
+
+// Modern Corner Decorations - Top Left (for sections)
+const CornerDecorationTopLeft = () => (
+  <div className="absolute top-0 left-0 w-48 h-48 md:w-64 md:h-64 pointer-events-none overflow-visible z-0">
+    <svg
+      viewBox="0 0 200 200"
+      className="w-full h-full"
+      fill="none"
+      stroke="#d4af37"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      opacity="0.2"
+    >
+      <path d="M0 40 Q30 20, 60 35 T120 50 T180 40" />
+      <path d="M20 0 Q0 30, 25 60" />
+      <path d="M0 100 Q40 80, 80 95" />
+    </svg>
+  </div>
+);
+
+// Modern Corner Decorations - Bottom Right (for sections)
+const CornerDecorationBottomRight = () => (
+  <div className="absolute bottom-0 right-0 w-48 h-48 md:w-64 md:h-64 pointer-events-none overflow-visible z-0">
+    <svg
+      viewBox="0 0 200 200"
+      className="w-full h-full"
+      fill="none"
+      stroke="#d4af37"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      opacity="0.2"
+    >
+      <path d="M200 160 Q170 180, 140 165 T80 150 T20 160" />
+      <path d="M180 200 Q200 170, 175 140" />
+      <path d="M200 100 Q160 120, 120 105" />
+    </svg>
+  </div>
+);
+
+// Subtle Background Accessories
+const BackgroundAccessories = () => (
+  <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-[0.06]">
+    {/* Top center subtle arc */}
+    <svg
+      className="absolute top-20 left-1/2 -translate-x-1/2 w-96 h-96 hidden md:block"
+      viewBox="0 0 400 400"
+      fill="none"
+      stroke="#8B0000"
+      strokeWidth="1"
+      strokeLinecap="round"
+    >
+      <path d="M50 200 Q200 100, 350 200" opacity="0.4" />
+      <path d="M100 250 Q200 150, 300 250" opacity="0.3" />
+    </svg>
+    
+    {/* Left side soft curve */}
+    <svg
+      className="absolute left-10 top-1/3 w-64 h-64 hidden lg:block"
+      viewBox="0 0 200 200"
+      fill="none"
+      stroke="#d4af37"
+      strokeWidth="1"
+      strokeLinecap="round"
+    >
+      <path d="M0 100 Q50 50, 100 80 T200 100" opacity="0.3" />
+    </svg>
+    
+    {/* Right side subtle curve */}
+    <svg
+      className="absolute right-10 bottom-1/4 w-56 h-56 hidden lg:block"
+      viewBox="0 0 200 200"
+      fill="none"
+      stroke="#8B0000"
+      strokeWidth="1"
+      strokeLinecap="round"
+    >
+      <path d="M200 120 Q150 150, 100 130 T0 120" opacity="0.3" />
+    </svg>
+  </div>
+);
 
 // Countdown Timer Component
 const CountdownTimer = ({ targetDate }: { targetDate: Date }) => {
@@ -314,7 +443,6 @@ const EventCard = ({
   time,
   venue,
   address,
-  mapUrl,
   delay = 0,
 }: {
   title: string;
@@ -322,11 +450,8 @@ const EventCard = ({
   time: string;
   venue: string;
   address: string;
-  mapUrl: string;
   delay?: number;
 }) => {
-  const [isMapLoaded, setIsMapLoaded] = useState(false);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -342,7 +467,7 @@ const EventCard = ({
         {title}
       </motion.h3>
 
-      <div className="space-y-4 mb-6">
+      <div className="space-y-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center">
             <svg
@@ -416,9 +541,67 @@ const EventCard = ({
           </div>
         </div>
       </div>
+    </motion.div>
+  );
+};
+
+// Venue Map Component
+const VenueMap = ({
+  mapUrl,
+  venue,
+  address,
+}: {
+  mapUrl: string;
+  venue: string;
+  address: string;
+}) => {
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.4 }}
+      viewport={{ once: true }}
+      className="glass rounded-3xl p-6 md:p-8 border border-[#d4af37]/20"
+    >
+      <motion.h3
+        className="text-2xl md:text-3xl font-playfair gradient-text mb-4 text-center"
+        whileHover={{ scale: 1.02 }}
+      >
+        Venue Location
+      </motion.h3>
+      
+      <div className="flex items-center gap-3 mb-6 justify-center">
+        <div className="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center">
+          <svg
+            className="w-5 h-5 text-[#d4af37]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+          </svg>
+        </div>
+        <div className="text-center">
+          <p className="font-cormorant text-lg md:text-xl font-semibold">{venue}</p>
+          <p className="text-sm text-muted">{address}</p>
+        </div>
+      </div>
 
       {/* Map */}
-      <div className="map-container relative h-48 md:h-64 rounded-2xl overflow-hidden">
+      <div className="map-container relative h-64 md:h-96 rounded-2xl overflow-hidden mb-6">
         {!isMapLoaded && (
           <div className="absolute inset-0 bg-accent-light animate-pulse flex items-center justify-center">
             <span className="text-muted">Loading map...</span>
@@ -441,11 +624,11 @@ const EventCard = ({
 
       <motion.a
         href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-          address
+          `${venue}, ${address}`
         )}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full border border-[#d4af37]/30 hover:bg-[#d4af37]/10 transition-all duration-300"
+        className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full border border-[#d4af37]/30 hover:bg-[#d4af37]/10 transition-all duration-300"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
@@ -690,11 +873,11 @@ const ShareButton = () => {
           e.stopPropagation();
           setShowOptions(!showOptions);
         }}
-        whileHover={{ scale: 1.1, color: "#d4af37" }}
-        className="text-muted transition-colors"
+        whileHover={{ scale: 1.05, color: "#d4af37" }}
+        className="flex items-center gap-1.5 text-muted transition-colors text-xs font-cormorant"
       >
         <svg
-          className="w-6 h-6"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -706,6 +889,7 @@ const ShareButton = () => {
             d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
           />
         </svg>
+        <span>Share</span>
       </motion.button>
 
       <AnimatePresence>
@@ -852,6 +1036,11 @@ export default function Home() {
   const handleEnter = async () => {
     setShowWelcome(false);
 
+    // Fire confetti boom effect
+    setTimeout(() => {
+      fireConfetti();
+    }, 300);
+
     // Start music on enter - Royalty-free romantic song with vocals
     if (!audioRef.current) {
       audioRef.current = new Audio(
@@ -870,8 +1059,8 @@ export default function Home() {
   };
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
-  // Wedding details - UPDATE THESE
-  const weddingDate = new Date("2026-02-03T10:00:00");
+  // Wedding details
+  const weddingDate = new Date("2026-02-03T12:00:00");
   const groomName = "Vikram";
   const brideName = "Shagun";
 
@@ -885,8 +1074,7 @@ export default function Home() {
       <FloatingParticles />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
-        {/* Animated Background */}
+      <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-8 md:py-12">
         <motion.div
           style={{ y: backgroundY }}
           className="absolute inset-0 opacity-20"
@@ -894,148 +1082,124 @@ export default function Home() {
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#d4af37] rounded-full blur-[150px]" />
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#d4af37] rounded-full blur-[150px]" />
         </motion.div>
+        
+        {/* Modern Corner Decorations */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, delay: 0.5 }}
+          className="absolute inset-0 pointer-events-none z-0"
+        >
+          <div className="absolute top-0 left-0 w-48 h-48 md:w-72 md:h-72 overflow-visible">
+            <svg
+              viewBox="0 0 200 200"
+              className="w-full h-full"
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity="0.25"
+            >
+              <path d="M0 40 Q30 20, 60 35 T120 50 T180 40" />
+              <path d="M20 0 Q0 30, 25 60" />
+              <path d="M0 100 Q40 80, 80 95" />
+            </svg>
+          </div>
+          <div className="absolute bottom-0 right-0 w-48 h-48 md:w-72 md:h-72 overflow-visible">
+            <svg
+              viewBox="0 0 200 200"
+              className="w-full h-full"
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity="0.25"
+            >
+              <path d="M200 160 Q170 180, 140 165 T80 150 T20 160" />
+              <path d="M180 200 Q200 170, 175 140" />
+              <path d="M200 100 Q160 120, 120 105" />
+            </svg>
+          </div>
+        </motion.div>
+        
+        {/* Subtle Background Accessories */}
+        <BackgroundAccessories />
+        
 
         {/* Content */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="relative z-10 text-center max-w-4xl mx-auto"
+          className="relative z-10 text-center max-w-4xl mx-auto w-full px-4 md:px-6"
         >
-          {/* Wedding Invitation Text */}
+          {/* Sanskrit Verse at top */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-muted uppercase tracking-[0.3em] text-sm md:text-base mb-8 font-inter"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg md:text-xl font-playfair text-[#d4af37]/70 mb-6 mt-4 md:mt-8 leading-relaxed"
           >
-            We&apos;re Getting Married
+            वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br />
+            निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
           </motion.p>
 
-          {/* Names */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="mb-8"
-          >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair gradient-text leading-tight">
-              {groomName}
-            </h1>
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.8, type: "spring" }}
-              className="my-4 md:my-6"
-            >
-              <span className="text-4xl md:text-6xl text-[#d4af37] font-cormorant">
-                &amp;
-              </span>
-            </motion.div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair gradient-text leading-tight">
-              {brideName}
-            </h1>
-          </motion.div>
 
-          <Divider />
-
-          {/* Date */}
+          {/* Invitation Text */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
-            className="mb-12"
+            transition={{ delay: 0.9 }}
+            className="mb-8 space-y-4"
           >
-            <p className="text-2xl md:text-3xl font-cormorant)] text-foreground">
-              Saturday, February 15th, 2025
+            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground leading-relaxed">
+              With the divine blessings of Lord Ganesha,
+            </p>
+            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground leading-relaxed">
+              and the loving remembrance and blessings of our revered grandparents:
+            </p>
+            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-muted leading-relaxed">
+              <span className="text-2xl md:text-3xl lg:text-4xl font-cormorant text-foreground font-semibold inline-block"><span className="whitespace-nowrap">Lt. Smt. Ram Devi</span> &<br />
+              <span className="whitespace-nowrap">Lt. Sh. Bhoop Ram Shan.</span></span>
+            </p>
+            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground leading-relaxed mt-6">
+              <span className="text-2xl md:text-3xl lg:text-4xl font-cormorant text-foreground font-semibold"><span className="whitespace-nowrap">Mrs. Koshaliya Devi</span> & <span className="whitespace-nowrap">Mr. Chamail Singh</span></span>
+              <br />
+              cordially invite you and your esteemed family
+            </p>
+            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground leading-relaxed">
+              to grace the auspicious wedding ceremony of our beloved son
+            </p>
+            <div className="my-10 py-6">
+              <p className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-playfair gradient-text mb-6 font-bold tracking-wide whitespace-nowrap">
+                {groomName}
+              </p>
+              <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground mb-6">
+                with
+              </p>
+              <p className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-playfair gradient-text mb-6 font-bold tracking-wide whitespace-nowrap">
+                {brideName}
+              </p>
+            </div>
+            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-muted leading-relaxed">
+              beloved daughter of
+            </p>
+            <p className="text-xl md:text-2xl lg:text-3xl font-cormorant text-foreground leading-relaxed">
+              <span className="text-2xl md:text-3xl lg:text-4xl font-cormorant text-foreground font-semibold"><span className="whitespace-nowrap">Smt. Madhu Dubey</span> & <span className="whitespace-nowrap">Sh. Desh Ratan Dubey</span></span>
             </p>
           </motion.div>
 
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, y: [0, 10, 0] }}
-            transition={{ delay: 1.5, y: { repeat: Infinity, duration: 2 } }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2"
-          >
-            <div className="w-6 h-10 rounded-full border-2 border-[#d4af37]/50 flex items-start justify-center p-2">
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-                className="w-1.5 h-1.5 bg-[#d4af37] rounded-full"
-              />
-            </div>
-          </motion.div>
         </motion.div>
-      </section>
-
-      {/* Countdown Section */}
-      <section className="py-20 md:py-32 px-4 relative">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-playfair gradient-text mb-4"
-          >
-            Counting Down To Forever
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-muted mb-12 font-cormorant text-xl"
-          >
-            The beginning of our beautiful journey together
-          </motion.p>
-          <CountdownTimer targetDate={weddingDate} />
-        </div>
       </section>
 
       <div className="section-divider max-w-2xl mx-auto" />
 
-      {/* Love Story Section */}
+      {/* Countdown Section */}
       <section className="py-20 md:py-32 px-4 relative">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-5xl font-playfair gradient-text mb-4">
-              Our Love Story
-            </h2>
-            <p className="text-muted font-cormorant text-xl">
-              A tale written in the stars
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass rounded-3xl p-8 md:p-12 border border-[#d4af37]/20"
-          >
-            <div className="flex justify-center mb-8">
-              <motion.div
-                className="text-6xl"
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-              >
-                ❤️
-              </motion.div>
-            </div>
-            <p className="text-center text-lg md:text-xl font-cormorant leading-relaxed text-foreground">
-              &ldquo;Every love story is beautiful, but ours is my favorite.
-              From the moment we met, we knew that something magical was
-              beginning. Through laughter and tears, through challenges and
-              triumphs, our love has only grown stronger. Now, we invite you to
-              celebrate with us as we begin the next chapter of our journey
-              together.&rdquo;
-            </p>
-          </motion.div>
+        <div className="max-w-4xl mx-auto text-center">
+          <CountdownTimer targetDate={weddingDate} />
         </div>
       </section>
 
@@ -1043,89 +1207,252 @@ export default function Home() {
 
       {/* Events Section */}
       <section className="py-20 md:py-32 px-4 relative">
-        <div className="max-w-6xl mx-auto">
+        {/* Subtle Corner Decorations */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+          className="absolute inset-0 pointer-events-none z-0"
+        >
+          <div className="absolute top-0 right-0 w-40 h-40 md:w-56 md:h-56 overflow-visible">
+            <svg
+              viewBox="0 0 200 200"
+              className="w-full h-full"
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity="0.2"
+            >
+              <path d="M200 30 Q170 20, 150 40 T110 50 T80 40" />
+              <path d="M200 0 Q185 25, 175 55" />
+            </svg>
+          </div>
+        </motion.div>
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="mb-8"
+            >
+              <p className="text-2xl md:text-3xl text-[#d4af37] font-cormorant">⸻</p>
+            </motion.div>
             <h2 className="text-3xl md:text-5xl font-playfair gradient-text mb-4">
-              Wedding Events
+              Wedding Festivities
             </h2>
-            <p className="text-muted font-cormorant text-xl">
-              Join us for these special celebrations
-            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
             <EventCard
-              title="Wedding Ceremony"
-              date="Saturday, February 15th, 2025"
-              time="10:00 AM - 12:00 PM"
-              venue="Grand Wedding Hall"
-              address="123 Wedding Street, City, Country 12345"
-              mapUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s150%20Park%20Row%2C%20New%20York%2C%20NY%2010007!5e0!3m2!1sen!2sus!4v1645564756836!5m2!1sen!2sus"
+              title="Mehendi Ceremony & Lunch"
+              date="3rd February 2026"
+              time="12:00 PM"
+              venue="Sahib Guest House"
+              address=""
               delay={0}
             />
             <EventCard
-              title="Wedding Reception"
-              date="Saturday, February 15th, 2025"
-              time="6:00 PM - 11:00 PM"
-              venue="Elegant Banquet Hall"
-              address="456 Celebration Avenue, City, Country 12345"
-              mapUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s150%20Park%20Row%2C%20New%20York%2C%20NY%2010007!5e0!3m2!1sen!2sus!4v1645564756836!5m2!1sen!2sus"
+              title="Haldi (Sanat) Ceremony & Lunch"
+              date="4th February 2026"
+              time="11:00 AM"
+              venue="Sahib Guest House"
+              address=""
               delay={0.2}
             />
           </div>
 
-          {/* Save the Date Button */}
-          <SaveTheDateButton
-            eventDate={weddingDate}
-            eventTitle={`${groomName} & ${brideName}'s Wedding`}
+          {/* Venue Map Section */}
+          <VenueMap
+            mapUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s150%20Park%20Row%2C%20New%20York%2C%20NY%2010007!5e0!3m2!1sen!2sus!4v1645564756836!5m2!1sen!2sus"
+            venue="Sahib Guest House"
+            address="Jammu"
           />
+
+          {/* Parking Information */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-8 text-center"
+          >
+            <p className="text-base md:text-lg font-cormorant text-foreground mb-2">
+              Separate parking area available
+            </p>
+            <a
+              href="https://maps.app.goo.gl/tY1KEge2BgufRSi27?g_st=iw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm md:text-base font-cormorant text-[#d4af37] hover:text-[#c4a030] transition-colors underline"
+            >
+              View Parking Location
+            </a>
+          </motion.div>
+
         </div>
       </section>
 
-      <div className="section-divider max-w-2xl mx-auto" />
-
       {/* Footer */}
-      <footer className="py-16 px-4 text-center">
+      <footer className="py-20 md:py-24 px-4 text-center relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-1/4 w-64 h-64 bg-[#d4af37] rounded-full blur-[100px]" />
+          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-[#8B0000] rounded-full blur-[100px]" />
+        </div>
+        
+        {/* Modern Corner Decorations */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+          className="absolute inset-0 pointer-events-none z-0"
         >
-          <h2 className="text-4xl md:text-6xl font-playfair gradient-text mb-6">
-            {groomName} & {brideName}
-          </h2>
-          <p className="text-muted font-cormorant text-xl mb-4">
-            {weddingDate.toLocaleDateString("en-US", {
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </p>
-          <p className="text-muted text-sm font-inter">
-            Made with ❤️ for a beautiful celebration
-          </p>
-          <div className="mt-8 flex justify-center gap-6 items-center">
+          <div className="absolute top-0 left-0 w-48 h-48 md:w-64 md:h-64 overflow-visible">
+            <svg
+              viewBox="0 0 200 200"
+              className="w-full h-full"
+              fill="none"
+              stroke="#8B0000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity="0.2"
+            >
+              <path d="M0 50 Q40 30, 70 45 T140 50" />
+              <path d="M30 0 Q0 35, 25 65" />
+            </svg>
+          </div>
+          <div className="absolute bottom-0 right-0 w-48 h-48 md:w-64 md:h-64 overflow-visible">
+            <svg
+              viewBox="0 0 200 200"
+              className="w-full h-full"
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity="0.2"
+            >
+              <path d="M200 150 Q160 170, 130 155 T60 150" />
+              <path d="M170 200 Q200 165, 175 135" />
+            </svg>
+          </div>
+        </motion.div>
+        
+        {/* Subtle Background Accessories */}
+        <BackgroundAccessories />
+        
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 max-w-4xl mx-auto"
+        >
+          {/* Decorative divider */}
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="h-px w-20 bg-gradient-to-r from-transparent to-[#d4af37]" />
+            <div className="w-2 h-2 rounded-full bg-[#d4af37] rotate-45" />
+            <div className="h-px w-20 bg-gradient-to-l from-transparent to-[#d4af37]" />
+          </div>
+
+          {/* Main heading */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="mb-6 flex flex-wrap items-center justify-center gap-3 md:gap-4"
+          >
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-playfair gradient-text leading-tight">
+              {groomName}
+            </h2>
+            <motion.span
+              initial={{ scale: 0, rotate: -45 }}
+              whileInView={{ scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
+              className="text-2xl md:text-4xl text-[#d4af37] font-cormorant font-light italic"
+            >
+              &amp;
+            </motion.span>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-playfair gradient-text leading-tight">
+              {brideName}
+            </h2>
+          </motion.div>
+
+          {/* Presence Message */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="mb-8"
+          >
+            <p className="text-lg md:text-xl font-cormorant text-foreground leading-relaxed mb-6">
+              Your gracious presence and heartfelt blessings
+            </p>
+            <p className="text-lg md:text-xl font-cormorant text-foreground leading-relaxed">
+              will add joy, warmth, and meaning to this sacred union.
+            </p>
+          </motion.div>
+
+          {/* Decorative divider */}
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="h-px w-20 bg-gradient-to-r from-transparent to-[#d4af37]" />
+            <div className="w-2 h-2 rounded-full bg-[#d4af37] rotate-45" />
+            <div className="h-px w-20 bg-gradient-to-l from-transparent to-[#d4af37]" />
+          </div>
+
+          {/* Contact Information */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8 }}
+            className="mb-8"
+          >
+            <p className="text-base md:text-lg font-cormorant text-muted mb-4">
+              For queries reach out to:
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-2 text-base md:text-lg font-cormorant">
+              <a
+                href="tel:+919906016244"
+                className="text-foreground hover:text-[#d4af37] transition-colors"
+              >
+                9906016244
+              </a>
+              <span className="text-muted">•</span>
+              <a
+                href="tel:+917006751473"
+                className="text-foreground hover:text-[#d4af37] transition-colors"
+              >
+                7006751473
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Social links */}
+          <div className="mt-4 flex justify-center gap-6 items-center">
             <motion.a
-              href="#"
-              whileHover={{ scale: 1.1, color: "#d4af37" }}
+              href="https://www.instagram.com/dr_vvvs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, color: "#d4af37" }}
               className="text-muted transition-colors"
             >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-              </svg>
-            </motion.a>
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.1, color: "#d4af37" }}
-              className="text-muted transition-colors"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
               </svg>
             </motion.a>
@@ -1135,8 +1462,24 @@ export default function Home() {
         </motion.div>
       </footer>
 
-      {/* Theme Toggle */}
-      <ThemeToggle />
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="fixed bottom-36 right-6 flex flex-col items-center gap-2 z-50"
+      >
+        <div className="w-6 h-10 rounded-full border-2 border-[#d4af37]/50 flex items-start justify-center p-2">
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+            className="w-1.5 h-1.5 bg-[#d4af37] rounded-full"
+          />
+        </div>
+        <span className="text-xs font-cormorant text-muted uppercase tracking-wider">
+          Scroll
+        </span>
+      </motion.div>
 
       {/* Music Player */}
       <MusicPlayer
@@ -1144,13 +1487,16 @@ export default function Home() {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
       />
+
+      {/* Theme Toggle */}
+      <ThemeToggle />
     </div>
   );
 }
 
 // Theme Toggle Component
 const ThemeToggle = () => {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const html = document.documentElement;
@@ -1254,7 +1600,7 @@ const MusicPlayer = ({
       animate={{ opacity: 1 }}
       transition={{ delay: 2.2 }}
       onClick={toggleMusic}
-      className="fixed bottom-6 right-20 w-12 h-12 rounded-full glass border border-[#d4af37]/30 flex items-center justify-center z-50 hover:border-[#d4af37]/60 transition-colors"
+      className="fixed bottom-20 right-6 w-12 h-12 rounded-full glass border border-[#d4af37]/30 flex items-center justify-center z-50 hover:border-[#d4af37]/60 transition-colors"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
     >
@@ -1306,3 +1652,4 @@ const MusicPlayer = ({
     </motion.button>
   );
 };
+
