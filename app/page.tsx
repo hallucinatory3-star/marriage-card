@@ -109,6 +109,16 @@ const PARTICLE_DATA = [
   { initialX: 0.56, initialY: 0.95, animateX: -35, duration: 17, delay: 0.6 },
   { initialX: 0.03, initialY: 0.48, animateX: 26, duration: 15, delay: 2.3 },
   { initialX: 0.72, initialY: 0.14, animateX: -41, duration: 10, delay: 3.3 },
+  { initialX: 0.25, initialY: 0.25, animateX: 20, duration: 15, delay: 0.7 },
+  { initialX: 0.75, initialY: 0.65, animateX: -25, duration: 16, delay: 1.9 },
+  { initialX: 0.50, initialY: 0.10, animateX: 30, duration: 13, delay: 2.6 },
+  { initialX: 0.20, initialY: 0.80, animateX: -35, duration: 17, delay: 3.4 },
+  { initialX: 0.85, initialY: 0.50, animateX: 15, duration: 14, delay: 4.1 },
+  { initialX: 0.40, initialY: 0.30, animateX: -28, duration: 18, delay: 0.9 },
+  { initialX: 0.60, initialY: 0.70, animateX: 22, duration: 12, delay: 1.6 },
+  { initialX: 0.10, initialY: 0.55, animateX: -40, duration: 19, delay: 2.8 },
+  { initialX: 0.90, initialY: 0.35, animateX: 18, duration: 15, delay: 3.7 },
+  { initialX: 0.35, initialY: 0.90, animateX: -32, duration: 16, delay: 4.5 },
 ];
 
 // Custom hook for window size that satisfies strict lint rules
@@ -167,8 +177,8 @@ const FloatingParticles = () => {
             key={i}
             className="absolute"
             style={{
-              width: "14px",
-              height: "14px",
+              width: "20px",
+              height: "20px",
             }}
             initial={{
               x: particle.initialX * windowSize.width,
@@ -183,7 +193,7 @@ const FloatingParticles = () => {
                 particle.animateX * 3 + i * 45,
                 particle.animateX * 6 + i * 45,
               ],
-              opacity: [0.15, 0.4, 0],
+              opacity: [0.25, 0.55, 0],
             }}
             transition={{
               duration: particle.duration,
@@ -193,16 +203,16 @@ const FloatingParticles = () => {
             }}
           >
             <svg viewBox="0 0 24 24" className="w-full h-full" fill="none">
-              {/* Rose petal shape - more rounded and petal-like */}
+              {/* Rose petal shape - heart-shaped top, wider and more rounded */}
               <path
-                d="M12 2 C10 3, 8.5 5, 8 7.5 C7.5 10, 8 12.5, 9.5 14.5 C10.5 15.5, 11.5 16, 12 16 C12.5 16, 13.5 15.5, 14.5 14.5 C16 12.5, 16.5 10, 16 7.5 C15.5 5, 14 3, 12 2 Z"
+                d="M12 1 C10 2, 7 3, 6 6 C5 9, 6 12, 8 15 C9 16.5, 10.5 17.5, 12 17.5 C13.5 17.5, 15 16.5, 16 15 C18 12, 19 9, 18 6 C17 3, 14 2, 12 1 Z"
                 fill={colorSet.outer}
-                opacity="0.6"
+                opacity="0.75"
               />
               <path
-                d="M12 3 C10.5 3.8, 9.5 5.5, 9 7.5 C8.7 9, 9 11, 10 12.5 C10.7 13.3, 11.3 13.7, 12 13.7 C12.7 13.7, 13.3 13.3, 14 12.5 C15 11, 15.3 9, 15 7.5 C14.5 5.5, 13.5 3.8, 12 3 Z"
+                d="M12 2 C10.5 2.8, 8.5 3.5, 7.5 5.5 C6.8 7, 7.2 9.5, 8.5 11.5 C9.3 12.8, 10.5 13.5, 12 13.5 C13.5 13.5, 14.7 12.8, 15.5 11.5 C16.8 9.5, 17.2 7, 16.5 5.5 C15.5 3.5, 13.5 2.8, 12 2 Z"
                 fill={colorSet.inner}
-                opacity="0.4"
+                opacity="0.6"
               />
             </svg>
           </motion.div>
@@ -1093,6 +1103,47 @@ export default function Home() {
           <div className="absolute top-1/6 right-1/4 w-md h-80 bg-[#d4af37] rounded-full blur-[180px]" />
         </motion.div>
 
+        {/* Additional Subtle Background Elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+          {/* Subtle corner decorations */}
+          <div className="absolute top-0 left-0 w-64 h-64 opacity-5">
+            <svg viewBox="0 0 200 200" className="w-full h-full" fill="none" stroke="#d4af37" strokeWidth="1">
+              <path d="M0 50 Q50 0, 100 30 T200 50" />
+              <path d="M0 100 Q30 50, 80 80 T200 100" />
+            </svg>
+          </div>
+          <div className="absolute bottom-0 right-0 w-64 h-64 opacity-5">
+            <svg viewBox="0 0 200 200" className="w-full h-full" fill="none" stroke="#d4af37" strokeWidth="1">
+              <path d="M200 150 Q150 200, 100 170 T0 150" />
+              <path d="M200 100 Q170 150, 120 120 T0 100" />
+            </svg>
+          </div>
+          
+          {/* Subtle floating dots */}
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={`dot-${i}`}
+              className="absolute rounded-full bg-[#d4af37]/10"
+              style={{
+                width: `${4 + (i % 3)}px`,
+                height: `${4 + (i % 3)}px`,
+                left: `${10 + i * 12}%`,
+                top: `${20 + (i % 4) * 20}%`,
+              }}
+              animate={{
+                opacity: [0.1, 0.2, 0.1],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 3 + i * 0.5,
+                repeat: Infinity,
+                delay: i * 0.3,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+
         <BackgroundAccessories />
 
         <motion.div
@@ -1134,21 +1185,24 @@ export default function Home() {
               className="font-cormorant text-muted leading-relaxed"
               style={{ fontSize: "var(--fs-lead)" }}
             >
-              <span className="font-semibold text-foreground whitespace-nowrap">
+              <span className="font-semibold text-foreground/60 whitespace-nowrap">
                 Late Smt. Ram Devi
               </span>
               <br />
-              <span className="font-semibold text-foreground whitespace-nowrap">
-                Late Sh. Bhoop Ram Shan
+              <span className="font-semibold text-foreground/60 whitespace-nowrap">
+                Late Sh. Bhoop Ram Shan.
               </span>
             </p>
 
-            <p
-              className="pt-4 font-cormorant text-foreground leading-relaxed"
+            <p className="pt-6 font-cormorant text-foreground leading-relaxed"
               style={{ fontSize: "var(--fs-body)" }}
             >
-              <span className="font-semibold text-foreground">
-                Mrs. Koshaliya Devi & Mr. Chamail Singh
+              <span className="font-semibold text-foreground whitespace-nowrap">
+                Smt. Koshaliya Devi &
+              </span>
+              <br />
+              <span className="font-semibold text-foreground whitespace-nowrap">
+                Sh. Chamail Singh
               </span>
               <br />
               cordially invite you and your esteemed family
@@ -1161,9 +1215,11 @@ export default function Home() {
               to grace the auspicious wedding ceremony of their beloved son
             </p>
           </div>
+          
+          
 
           {/* Names */}
-          <div className="my-6 space-y-6">
+          <div className="space-y-5">
             <p
               className="font-playfair text-[#d4af37] font-bold tracking-wide"
               style={{ fontSize: "var(--fs-name)" }}
@@ -1189,8 +1245,12 @@ export default function Home() {
             style={{ fontSize: "var(--fs-body)" }}
           >
             beloved daughter of <br />
-            <span className="font-semibold text-foreground">
-              Smt. Madhu Bala Dubey & Sh. Desh Rattan Dubey
+            <span className="font-semibold text-foreground whitespace-nowrap">
+              Smt. Madhu Bala Dubey &
+            </span>
+            <br />
+            <span className="font-semibold text-foreground whitespace-nowrap">
+              Sh. Desh Rattan Dubey
             </span>
           </p>
         </motion.div>
@@ -1392,7 +1452,7 @@ export default function Home() {
             </h2>
           </motion.div>
 
-          {/* Presence Message */}
+          {/* Nemo Mention */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -1400,7 +1460,23 @@ export default function Home() {
             transition={{ delay: 0.6 }}
             className="mb-8"
           >
-            <p className="text-lg md:text-xl font-cormorant text-foreground leading-relaxed mb-6">
+            <p className="text-base md:text-lg font-cormorant text-foreground/80 leading-relaxed">
+              With special love and blessings from beloved nephew{" "}
+              <span className="font-semibold text-foreground">
+                Nemo
+              </span>
+            </p>
+          </motion.div>
+
+          {/* Presence Message */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.7 }}
+            className="mb-8"
+          >
+            <p className="text-lg md:text-xl font-cormorant text-foreground leading-relaxed">
               Your gracious presence and heartfelt blessings
             </p>
             <p className="text-lg md:text-xl font-cormorant text-foreground leading-relaxed">
