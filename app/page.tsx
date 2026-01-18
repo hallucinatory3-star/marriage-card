@@ -1165,101 +1165,201 @@ export default function Home() {
             निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
           </motion.p>
 
-          {/* Narrative */}
-          <div className="">
-            <p
-              className="font-cormorant text-foreground leading-relaxed"
-              style={{ fontSize: "var(--fs-body)" }}
-            >
-              With the divine blessings of Lord Ganesha,
-            </p>
-
-            <p
-              className="font-cormorant text-foreground leading-relaxed"
-              style={{ fontSize: "var(--fs-body)" }}
-            >
-              and the loving remembrance of our revered grandparents
-            </p>
-
-            <p
-              className="font-cormorant text-muted leading-relaxed"
-              style={{ fontSize: "var(--fs-lead)" }}
-            >
-              <span className="font-semibold text-foreground/60 whitespace-nowrap">
-                Late Smt. Ram Devi
-              </span>
-              <br />
-              <span className="font-semibold text-foreground/60 whitespace-nowrap">
-                Late Sh. Bhoop Ram Shan.
-              </span>
-            </p>
-
-            <p className="pt-6 font-cormorant text-foreground leading-relaxed"
-              style={{ fontSize: "var(--fs-body)" }}
-            >
-              <span className="font-semibold text-foreground whitespace-nowrap">
-                Smt. Koshaliya Devi &
-              </span>
-              <br />
-              <span className="font-semibold text-foreground whitespace-nowrap">
-                Sh. Chamail Singh
-              </span>
-              <br />
-              cordially invite you and your esteemed family
-            </p>
-
-            <p
-              className="font-cormorant text-foreground leading-relaxed"
-              style={{ fontSize: "var(--fs-body)" }}
-            >
-              to grace the auspicious wedding ceremony of their beloved son
-            </p>
-          </div>
-          
-          
-
-          {/* Names */}
-          <div className="space-y-5">
-            <p
-              className="font-playfair text-[#d4af37] font-bold tracking-wide"
-              style={{ fontSize: "var(--fs-name)" }}
-            >
-              {groomName}
-            </p>
-
-            <p className="font-cormorant text-muted tracking-widest uppercase text-sm">
-              with
-            </p>
-
-            <p
-              className="font-playfair text-[#d4af37] font-bold tracking-wide"
-              style={{ fontSize: "var(--fs-name)" }}
-            >
-              {brideName}
-            </p>
-          </div>
-
-          {/* Bride Parents */}
+          {/* We're getting married */}
           <p
-            className="pt-4 font-cormorant text-foreground leading-relaxed"
-            style={{ fontSize: "var(--fs-body)" }}
+            className="font-cormorant text-foreground leading-relaxed my-8"
+            style={{ fontSize: "calc(var(--fs-body) * 1.2)" }}
           >
-            beloved daughter of <br />
-            <span className="font-semibold text-foreground whitespace-nowrap">
-              Smt. Madhu Bala Dubey &
-            </span>
-            <br />
-            <span className="font-semibold text-foreground whitespace-nowrap">
-              Sh. Desh Rattan Dubey
-            </span>
+            We're getting married
           </p>
+
+          {/* Hashtag */}
+          <p
+            className="font-cormorant text-foreground leading-relaxed mb-6 font-bold"
+            style={{ fontSize: "calc(var(--fs-body) * 1.2)" }}
+          >
+            #ShaiVikmeSauGun
+          </p>
+
+          {/* Divider */}
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: 80 }}
+              transition={{ duration: 1.2, delay: 0.5 }}
+              className="h-px bg-gradient-to-r from-transparent to-[#d4af37]"
+            />
+            <motion.div
+              initial={{ scale: 0, rotate: 0 }}
+              animate={{ scale: 1, rotate: 45 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="w-3 h-3 border-2 border-[#d4af37]"
+            />
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: 80 }}
+              transition={{ duration: 1.2, delay: 0.5 }}
+              className="h-px bg-gradient-to-l from-transparent to-[#d4af37]"
+            />
+          </div>
+
+          {/* Date */}
+          <p
+            className="font-cormorant text-foreground leading-relaxed"
+            style={{ fontSize: "calc(var(--fs-body) * 1.2)" }}
+          >
+            Wednesday, February 4th, 2026
+          </p>
+
+          {/* Countdown Timer */}
+          <div className="mt-12">
+            <CountdownTimer targetDate={weddingDate} />
+          </div>
         </motion.div>
       </section>
 
-      {/* Countdown Section */}
-      <section className="p-4 relative">
+      {/* Narrative and Details Section */}
+      <section className="px-4 py-16 relative">
         <div className="max-w-4xl mx-auto text-center">
-          <CountdownTimer targetDate={weddingDate} />
+          {/* Invitation Header */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-6"
+          >
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 80 }}
+                transition={{ duration: 1.2 }}
+                className="h-px bg-gradient-to-r from-transparent to-[#d4af37]"
+              />
+              <h2 className="text-4xl md:text-5xl font-playfair text-[#d4af37] whitespace-nowrap">
+                Invitation
+              </h2>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 80 }}
+                transition={{ duration: 1.2 }}
+                className="h-px bg-gradient-to-l from-transparent to-[#d4af37]"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Narrative */}
+            <div className="">
+              <p
+                className="font-cormorant text-foreground leading-relaxed"
+                style={{ fontSize: "var(--fs-body)" }}
+              >
+                With the divine blessings of Lord Ganesha,
+              </p>
+
+              <p
+                className="font-cormorant text-foreground leading-relaxed"
+                style={{ fontSize: "var(--fs-body)" }}
+              >
+                and the loving remembrance of our revered grandparents
+              </p>
+
+              <p
+                className="font-cormorant text-muted leading-relaxed"
+                style={{ fontSize: "var(--fs-lead)" }}
+              >
+                <span className="font-semibold text-foreground/60 whitespace-nowrap">
+                  Late Smt. Ram Devi &
+                </span>
+                <br />
+                <span className="font-semibold text-foreground/60 whitespace-nowrap">
+                  Late Sh. Bhoop Ram Shan,
+                </span>
+              </p>
+
+              <p className="pt-6 font-cormorant text-foreground leading-relaxed"
+                style={{ fontSize: "var(--fs-lead)" }}
+              >
+                <span className="font-semibold text-foreground whitespace-nowrap">
+                  Smt. Koshaliya Devi &
+                </span>
+                <br />
+                <span className="font-semibold text-foreground whitespace-nowrap">
+                  Sh. Chamail Singh
+                </span>
+                <br />
+              </p>
+
+              <p
+                className="font-cormorant text-foreground leading-relaxed"
+                style={{ fontSize: "var(--fs-body)" }}
+              >
+                joyfully open hearts to invite you to the wedding festivities of their beloved son
+              </p>
+            </div>
+
+            {/* Names */}
+            <div className="space-y-5 my-2">
+              <p
+                className="font-playfair text-[#d4af37] font-bold tracking-wide"
+                style={{ fontSize: "var(--fs-name)" }}
+              >
+                {groomName}
+              </p>
+
+              <span className="text-lg text-[#d4af37] font-cormorant">As he begins timeless journey hand in hand</span>
+
+              <p className="font-cormorant text-[#d4af37] tracking-widest uppercase text-sm">
+                with
+              </p>
+
+              <p
+                className="font-playfair text-[#d4af37] font-bold tracking-wide"
+                style={{ fontSize: "var(--fs-name)" }}
+              >
+                {brideName}
+              </p>
+            </div>
+
+            {/* Bride Parents */}
+            <p
+              className="font-cormorant text-foreground leading-relaxed"
+              style={{ fontSize: "var(--fs-lead)" }}
+            >
+              beloved daughter of <br />
+              <span className="font-semibold text-foreground whitespace-nowrap">
+                Smt. Madhu Bala Dubey &
+              </span>
+              <br />
+              <span className="font-semibold text-foreground whitespace-nowrap">
+                Sh. Desh Rattan Dubey
+              </span>
+
+              <p className="m-4">On 4th February, 2026.</p>
+
+              {/* Presence Message */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.7 }}
+            className="mb-8"
+          >
+            <p className="text-lg md:text-xl font-cormorant text-foreground leading-relaxed">
+              Your gracious presence and heartfelt blessings
+            </p>
+            <p className="text-lg md:text-xl font-cormorant text-foreground leading-relaxed">
+              will add joy, warmth, and meaning to our celebration.
+            </p>
+          </motion.div>
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -1313,7 +1413,7 @@ export default function Home() {
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8">
             <EventCard
               title="Mehendi Ceremony & Lunch"
               date="3rd February 2026"
@@ -1332,6 +1432,8 @@ export default function Home() {
             />
           </div>
 
+          <div className="my-12" />
+
           {/* Venue Map Section */}
           <VenueMap
             mapUrl="https://www.google.com/maps?q=Sahib+Guest+House+Jammu&output=embed"
@@ -1348,15 +1450,23 @@ export default function Home() {
             className="mt-8 text-center"
           >
             <p className="text-base md:text-lg font-cormorant text-foreground mb-2">
-              Separate parking area available
+              Kindly park your vehicles at the following locations:
             </p>
+            <a
+              href="https://maps.app.goo.gl/nxRowSaU7ciaMpNh6?g_st=ig"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm md:text-base font-cormorant text-[#d4af37] hover:text-[#c4a030] transition-colors underline mr-4"
+            >
+              Parking Area One
+            </a>
             <a
               href="https://maps.app.goo.gl/tY1KEge2BgufRSi27?g_st=iw"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm md:text-base font-cormorant text-[#d4af37] hover:text-[#c4a030] transition-colors underline"
             >
-              View Parking Location
+              Parking Area Two
             </a>
           </motion.div>
         </div>
@@ -1461,26 +1571,10 @@ export default function Home() {
             className="mb-8"
           >
             <p className="text-base md:text-lg font-cormorant text-foreground/80 leading-relaxed">
-              With special love and blessings from beloved nephew{" "}
-              <span className="font-semibold text-foreground">
+              With special love and blessings from beloved nephew:{" "}
+              <span className="font-semibold text-foreground text-lg md:text-xl">
                 Nemo
               </span>
-            </p>
-          </motion.div>
-
-          {/* Presence Message */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7 }}
-            className="mb-8"
-          >
-            <p className="text-lg md:text-xl font-cormorant text-foreground leading-relaxed">
-              Your gracious presence and heartfelt blessings
-            </p>
-            <p className="text-lg md:text-xl font-cormorant text-foreground leading-relaxed">
-              will add joy, warmth, and meaning to our celebration.
             </p>
           </motion.div>
 
@@ -1499,15 +1593,15 @@ export default function Home() {
             transition={{ delay: 0.8 }}
             className="mb-8"
           >
-            <p className="text-base md:text-lg font-cormorant text-muted mb-4">
+            <p className="text-base md:text-lg font-cormorant text-muted mb-2">
               For queries reach out to:
             </p>
             <div className="flex flex-wrap items-center justify-center gap-2 text-base md:text-lg font-cormorant">
               <a
-                href="tel:+919906016244"
+                href="tel:+918899277840"
                 className="text-foreground hover:text-[#d4af37] transition-colors"
               >
-                9906016244
+                8899277840
               </a>
               <span className="text-muted">•</span>
               <a
@@ -1515,6 +1609,13 @@ export default function Home() {
                 className="text-foreground hover:text-[#d4af37] transition-colors"
               >
                 7006751473
+              </a>
+              <span className="text-muted">•</span>
+              <a
+                href="tel:+919906016244"
+                className="text-foreground hover:text-[#d4af37] transition-colors"
+              >
+                9906016244
               </a>
             </div>
           </motion.div>
