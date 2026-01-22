@@ -1157,29 +1157,38 @@ export default function Home() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mb-5 font-playfair text-[#d4af37]/80 leading-relaxed tracking-wide"
-            style={{ fontSize: "var(--fs-sacred)" }}
+            className="mb-2 font-playfair text-[#d4af37]/80 leading-relaxed tracking-wide"
+            style={{ fontSize: "calc(var(--fs-sacred) * 1.2)" }}
           >
             वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।
             <br />
             निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
           </motion.p>
 
-          {/* We're getting married */}
-          <p
-            className="font-cormorant text-foreground leading-relaxed my-8"
-            style={{ fontSize: "calc(var(--fs-body) * 1.2)" }}
+          {/* Kul Devta and Kul Devi */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mb-8 text-center"
           >
-            We're getting married
-          </p>
-
-          {/* Hashtag */}
-          <p
-            className="font-cormorant text-foreground leading-relaxed mb-6 font-bold"
-            style={{ fontSize: "calc(var(--fs-body) * 1.2)" }}
-          >
-            #ShaiVikmeSauGun
-          </p>
+            <motion.p
+              className="font-playfair text-[#d4af37]/90 leading-relaxed tracking-wide mt-3"
+              style={{ fontSize: "calc(var(--fs-sacred) * 1.2)" }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              कुलदेवी अठारह भुजा माता की जय।
+            </motion.p>
+            <motion.p
+              className="font-playfair text-[#d4af37]/90 leading-relaxed tracking-wide"
+              style={{ fontSize: "calc(var(--fs-sacred) * 1.2)" }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              कुलदेवता राज़िल नाग जी की जय॥
+            </motion.p>
+          </motion.div>
 
           {/* Divider */}
           <div className="flex items-center justify-center gap-4 mb-8">
@@ -1203,6 +1212,15 @@ export default function Home() {
             />
           </div>
 
+          
+          {/* Hashtag */}
+          <p
+            className="font-cormorant text-foreground leading-relaxed mb-6 font-bold"
+            style={{ fontSize: "calc(var(--fs-sacred) * 1.6)" }}
+          >
+            #ShaiVikmeSauGun
+          </p>
+
           {/* Date */}
           <p
             className="font-cormorant text-foreground leading-relaxed"
@@ -1219,7 +1237,7 @@ export default function Home() {
       </section>
 
       {/* Narrative and Details Section */}
-      <section className="px-4 py-16 relative">
+      <section className="px-4 py-6 relative">
         <div className="max-w-4xl mx-auto text-center">
           {/* Invitation Header */}
           <motion.div
@@ -1271,14 +1289,14 @@ export default function Home() {
               </p>
 
               <p
-                className="font-cormorant text-muted leading-relaxed"
+                className="font-cormorant leading-relaxed"
                 style={{ fontSize: "var(--fs-lead)" }}
               >
-                <span className="font-semibold text-foreground/60 whitespace-nowrap">
+                <span className="font-semibold text-foreground whitespace-nowrap">
                   Late Smt. Ram Devi &
                 </span>
                 <br />
-                <span className="font-semibold text-foreground/60 whitespace-nowrap">
+                <span className="font-semibold text-foreground whitespace-nowrap">
                   Late Sh. Bhoop Ram Shan,
                 </span>
               </p>
@@ -1300,28 +1318,28 @@ export default function Home() {
                 className="font-cormorant text-foreground leading-relaxed"
                 style={{ fontSize: "var(--fs-body)" }}
               >
-                joyfully open hearts to invite you to the wedding festivities of their beloved son
+                joyfully open hearts to invite you to witness a tale of hearts entwining, where promises are whispered, dreams are shared and a lifetime begins in the glow of sacred vows - at the wedding celebration of their beloved son
               </p>
             </div>
 
             {/* Names */}
-            <div className="space-y-5 my-2">
+            <div className="space-y-2 my-2">
               <p
-                className="font-playfair text-[#d4af37] font-bold tracking-wide"
-                style={{ fontSize: "var(--fs-name)" }}
+                className="text-[#d4af37] font-black tracking-wide"
+                style={{ fontSize: "var(--fs-name)", fontFamily: "Lobster, cursive" }}
               >
                 {groomName}
               </p>
 
-              <span className="text-lg text-[#d4af37] font-cormorant">As he begins timeless journey hand in hand</span>
+              <span className="text-lg font-cormorant">As he begins his timeless journey hand in hand</span>
 
-              <p className="font-cormorant text-[#d4af37] tracking-widest uppercase text-sm">
+              <p className="font-cormorant tracking-widest text-lg">
                 with
               </p>
 
               <p
-                className="font-playfair text-[#d4af37] font-bold tracking-wide"
-                style={{ fontSize: "var(--fs-name)" }}
+                className="text-[#d4af37] font-black tracking-wide"
+                style={{ fontSize: "var(--fs-name)", fontFamily: "Lobster, cursive" }}
               >
                 {brideName}
               </p>
@@ -1398,16 +1416,6 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="mb-8"
-            >
-              <p className="text-2xl md:text-3xl text-[#d4af37] font-cormorant">
-                ⸻
-              </p>
-            </motion.div>
             <h2 className="text-3xl md:text-5xl font-playfair text-[#d4af37] mb-4">
               Wedding Festivities
             </h2>
@@ -1456,7 +1464,7 @@ export default function Home() {
               href="https://maps.app.goo.gl/nxRowSaU7ciaMpNh6?g_st=ig"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm md:text-base font-cormorant text-[#d4af37] hover:text-[#c4a030] transition-colors underline mr-4"
+              className="text-base md:text-lg font-cormorant text-blue-600 hover:text-blue-800 transition-colors underline mr-4"
             >
               Parking Area One
             </a>
@@ -1464,7 +1472,7 @@ export default function Home() {
               href="https://maps.app.goo.gl/tY1KEge2BgufRSi27?g_st=iw"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm md:text-base font-cormorant text-[#d4af37] hover:text-[#c4a030] transition-colors underline"
+              className="text-base md:text-lg font-cormorant text-blue-600 hover:text-blue-800 transition-colors underline"
             >
               Parking Area Two
             </a>
@@ -1545,7 +1553,7 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="mb-6 flex flex-wrap items-center justify-center gap-3 md:gap-4"
           >
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-playfair text-[#d4af37] leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl text-[#d4af37] leading-tight font-black" style={{ fontFamily: "Lobster, cursive" }}>
               {groomName}
             </h2>
             <motion.span
@@ -1557,7 +1565,7 @@ export default function Home() {
             >
               &amp;
             </motion.span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-playfair text-[#d4af37] leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl text-[#d4af37] leading-tight font-black" style={{ fontFamily: "Lobster, cursive" }}>
               {brideName}
             </h2>
           </motion.div>
