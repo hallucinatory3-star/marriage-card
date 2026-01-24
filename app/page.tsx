@@ -87,7 +87,7 @@ const fireConfetti = () => {
   }, 2000);
 };
 
-// Pre-computed particle data with deterministic values to avoid hydration mismatches
+// Pre-computed particle data with deterministic values to avoid hydration mismatches - REDUCED for performance
 const PARTICLE_DATA = [
   { initialX: 0.12, initialY: 0.34, animateX: 23, duration: 14, delay: 1.2 },
   { initialX: 0.87, initialY: 0.21, animateX: -31, duration: 18, delay: 0.5 },
@@ -97,22 +97,6 @@ const PARTICLE_DATA = [
   { initialX: 0.34, initialY: 0.89, animateX: -22, duration: 19, delay: 1.7 },
   { initialX: 0.67, initialY: 0.43, animateX: 37, duration: 13, delay: 4.2 },
   { initialX: 0.15, initialY: 0.67, animateX: -15, duration: 17, delay: 0.8 },
-  { initialX: 0.78, initialY: 0.31, animateX: 28, duration: 15, delay: 2.1 },
-  { initialX: 0.52, initialY: 0.94, animateX: -38, duration: 10, delay: 3.6 },
-  { initialX: 0.08, initialY: 0.18, animateX: 19, duration: 14, delay: 1.4 },
-  { initialX: 0.95, initialY: 0.72, animateX: -27, duration: 18, delay: 4.8 },
-  { initialX: 0.41, initialY: 0.05, animateX: 42, duration: 12, delay: 0.1 },
-  { initialX: 0.29, initialY: 0.83, animateX: -9, duration: 16, delay: 2.5 },
-  { initialX: 0.63, initialY: 0.39, animateX: 33, duration: 11, delay: 3.9 },
-  { initialX: 0.18, initialY: 0.61, animateX: -48, duration: 19, delay: 1.0 },
-  { initialX: 0.84, initialY: 0.27, animateX: 14, duration: 13, delay: 4.4 },
-  { initialX: 0.56, initialY: 0.95, animateX: -35, duration: 17, delay: 0.6 },
-  { initialX: 0.03, initialY: 0.48, animateX: 26, duration: 15, delay: 2.3 },
-  { initialX: 0.72, initialY: 0.14, animateX: -41, duration: 10, delay: 3.3 },
-  { initialX: 0.25, initialY: 0.25, animateX: 20, duration: 15, delay: 0.7 },
-  { initialX: 0.75, initialY: 0.65, animateX: -25, duration: 16, delay: 1.9 },
-  { initialX: 0.50, initialY: 0.10, animateX: 30, duration: 13, delay: 2.6 },
-  { initialX: 0.20, initialY: 0.80, animateX: -35, duration: 17, delay: 3.4 },
   { initialX: 0.85, initialY: 0.50, animateX: 15, duration: 14, delay: 4.1 },
   { initialX: 0.40, initialY: 0.30, animateX: -28, duration: 18, delay: 0.9 },
   { initialX: 0.60, initialY: 0.70, animateX: 22, duration: 12, delay: 1.6 },
@@ -353,17 +337,10 @@ const CountdownTimer = ({ targetDate }: { targetDate: Date }) => {
         {timeBlocks.map((block, index) => (
           <motion.div
             key={block.label}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
             className="flex flex-col items-center"
           >
-            <motion.div
+            <div
               className="w-16 h-16 md:w-24 md:h-24 rounded-2xl glass flex items-center justify-center border border-[#d4af37]/30"
-              whileHover={{
-                scale: 1.05,
-                borderColor: "rgba(212, 175, 55, 0.6)",
-              }}
             >
               <AnimatePresence mode="wait">
                 <motion.span
@@ -376,7 +353,7 @@ const CountdownTimer = ({ targetDate }: { targetDate: Date }) => {
                   {String(block.value).padStart(2, "0")}
                 </motion.span>
               </AnimatePresence>
-            </motion.div>
+            </div>
             <span className="mt-2 text-xs md:text-sm text-muted uppercase tracking-widest font-inter">
               {block.label}
             </span>
@@ -423,27 +400,12 @@ const CountdownTimer = ({ targetDate }: { targetDate: Date }) => {
   );
 };
 
-// Decorative Divider
+// Decorative Divider - simplified for performance
 const Divider = () => (
   <div className="flex items-center justify-center gap-4 my-12">
-    <motion.div
-      initial={{ width: 0 }}
-      whileInView={{ width: 80 }}
-      transition={{ duration: 0.8 }}
-      className="h-px bg-linear-to-r from-transparent to-[#d4af37]"
-    />
-    <motion.div
-      initial={{ scale: 0, rotate: 0 }}
-      whileInView={{ scale: 1, rotate: 45 }}
-      transition={{ duration: 0.5 }}
-      className="w-3 h-3 border-2 border-[#d4af37]"
-    />
-    <motion.div
-      initial={{ width: 0 }}
-      whileInView={{ width: 80 }}
-      transition={{ duration: 0.8 }}
-      className="h-px bg-linear-to-l from-transparent to-[#d4af37]"
-    />
+    <div className="h-px bg-linear-to-r from-transparent to-[#d4af37] w-20" />
+    <div className="w-3 h-3 border-2 border-[#d4af37]" />
+    <div className="h-px bg-linear-to-r from-[#d4af37] to-transparent w-20" />
   </div>
 );
 
@@ -967,7 +929,7 @@ const WelcomeOverlay = ({ onEnter }: { onEnter: () => void }) => {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
-      className="fixed inset-0 z-100 bg-background flex items-center justify-center"
+      className="fixed inset-0 z-100 bg-[#faf8f5] flex items-center justify-center"
     >
       <div className="text-center px-6">
         {/* Decorative ring */}
@@ -1035,10 +997,13 @@ const WelcomeOverlay = ({ onEnter }: { onEnter: () => void }) => {
 // Main Page Component
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef });
+  const { scrollYProgress } = useScroll();
   const [showWelcome, setShowWelcome] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [autoScroll, setAutoScroll] = useState(true);
+  const [scrollCompleted, setScrollCompleted] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
 
   // Lock body scroll when welcome overlay is shown
   useEffect(() => {
@@ -1051,6 +1016,101 @@ export default function Home() {
       document.body.style.overflow = "";
     };
   }, [showWelcome]);
+
+  // Buttery smooth continuous auto-scroll (fixed for full-page sections)
+  useEffect(() => {
+    if (autoScroll && !showWelcome && !scrollCompleted) {
+      let animationId: number;
+      let lastTime = 0;
+      let accumulatedScroll = 0;
+      const scrollSpeed = 80; // pixels per second - elegant and relaxed pace
+      const targetFPS = 60;
+      const frameInterval = 1000 / targetFPS;
+      
+      const butterySmoothScroll = (currentTime: number) => {
+        if (!lastTime) {
+          lastTime = currentTime;
+          accumulatedScroll = 0;
+        }
+        
+        const deltaTime = currentTime - lastTime;
+        lastTime = currentTime;
+        
+        // Only scroll if enough time has passed for target FPS
+        if (deltaTime >= frameInterval) {
+          const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const currentScroll = window.pageYOffset;
+          
+          if (currentScroll < scrollHeight - 50) {
+            // Calculate precise scroll distance for this frame
+            const scrollDelta = (scrollSpeed * deltaTime) / 1000;
+            accumulatedScroll += scrollDelta;
+            
+            // Apply accumulated scroll immediately
+            if (accumulatedScroll >= 0.5) {
+              window.scrollTo(0, currentScroll + accumulatedScroll);
+              accumulatedScroll = 0;
+            }
+          } else {
+          // End of content - stop scrolling permanently
+          setAutoScroll(false);
+          setScrollCompleted(true); // Mark as completed
+          return;
+        }
+        }
+        
+        animationId = requestAnimationFrame(butterySmoothScroll);
+      };
+      
+      // Start immediately - no delay for better UX
+      animationId = requestAnimationFrame(butterySmoothScroll);
+
+      return () => {
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+        }
+      };
+    }
+  }, [autoScroll, showWelcome, scrollCompleted]);
+
+  // Pause auto-scroll on meaningful user interaction, resume when idle (only if not completed and welcome is hidden)
+  useEffect(() => {
+    // Only run interaction handler if welcome overlay is hidden
+    if (showWelcome) return;
+    
+    let idleTimer: NodeJS.Timeout;
+    let isInteracting = false;
+    
+    const handleUserInteraction = (e: Event) => {
+      // Only pause if auto-scroll is currently active (not already paused)
+      if (autoScroll && !isInteracting && ['wheel', 'touchstart', 'mousedown', 'keydown'].includes(e.type)) {
+        isInteracting = true;
+        setAutoScroll(false);
+        
+        // Clear any existing idle timer
+        if (idleTimer) clearTimeout(idleTimer);
+        
+        // Resume after 1 second of inactivity
+        idleTimer = setTimeout(() => {
+          isInteracting = false;
+          setAutoScroll(true);
+        }, 1000);
+      }
+    };
+
+    // Listen to meaningful interactions only
+    const events = ['wheel', 'touchstart', 'mousedown', 'keydown'];
+    events.forEach(event => {
+      window.addEventListener(event, handleUserInteraction, { passive: true });
+    });
+
+    return () => {
+      events.forEach(event => {
+        window.removeEventListener(event, handleUserInteraction);
+      });
+      if (idleTimer) clearTimeout(idleTimer);
+    };
+  }, [scrollCompleted, showWelcome]);
 
   const handleEnter = async () => {
     setShowWelcome(false);
@@ -1073,7 +1133,7 @@ export default function Home() {
       await audioRef.current.play();
       setIsPlaying(true);
     } catch {
-      console.log("Autoplay failed, user can use music button");
+      // Autoplay failed, user can use music button
     }
   };
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
@@ -1090,6 +1150,7 @@ export default function Home() {
         {showWelcome && <WelcomeOverlay onEnter={handleEnter} />}
       </AnimatePresence>
 
+      
       <FloatingParticles />
 
       {/* Hero Section */}
@@ -1119,26 +1180,25 @@ export default function Home() {
             </svg>
           </div>
           
-          {/* Subtle floating dots */}
-          {[...Array(8)].map((_, i) => (
+          {/* Subtle floating dots - REDUCED for performance */}
+          {[...Array(4)].map((_, i) => (
             <motion.div
               key={`dot-${i}`}
               className="absolute rounded-full bg-[#d4af37]/10"
               style={{
                 width: `${4 + (i % 3)}px`,
                 height: `${4 + (i % 3)}px`,
-                left: `${10 + i * 12}%`,
+                left: `${10 + i * 25}%`,
                 top: `${20 + (i % 4) * 20}%`,
               }}
               animate={{
-                opacity: [0.1, 0.2, 0.1],
-                scale: [1, 1.2, 1],
+                y: [0, 12, 0],
               }}
               transition={{
-                duration: 3 + i * 0.5,
+                duration: 4 + i * 0.5,
                 repeat: Infinity,
-                delay: i * 0.3,
                 ease: "easeInOut",
+                delay: i * 0.3,
               }}
             />
           ))}
@@ -1359,7 +1419,8 @@ export default function Home() {
                 Sh. Desh Rattan Dubey
               </span>
 
-              <p className="m-4">On 4th February, 2026.</p>
+              <span className="block m-4">On 4th February, 2026.</span>
+            </p>
 
               {/* Presence Message */}
           <motion.div
@@ -1376,8 +1437,7 @@ export default function Home() {
               will add joy, warmth, and meaning to our celebration.
             </p>
           </motion.div>
-            </p>
-          </motion.div>
+        </motion.div>
         </div>
       </section>
 
@@ -1647,34 +1707,18 @@ export default function Home() {
         </motion.div>
       </footer>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="fixed bottom-36 right-6 flex flex-col items-center gap-2 z-50"
-      >
-        <div className="w-6 h-10 rounded-full border-2 border-[#d4af37]/50 flex items-start justify-center p-2">
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-1.5 h-1.5 bg-[#d4af37] rounded-full"
-          />
-        </div>
-        <span className="text-xs font-cormorant text-muted uppercase tracking-wider">
-          Scroll
-        </span>
-      </motion.div>
+      
+      {/* Music Player - Only show after welcome */}
+      {!showWelcome && (
+        <MusicPlayer
+          audioRef={audioRef}
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+        />
+      )}
 
-      {/* Music Player */}
-      <MusicPlayer
-        audioRef={audioRef}
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-      />
-
-      {/* Theme Toggle */}
-      <ThemeToggle />
+      {/* Theme Toggle - Only show after welcome */}
+      {!showWelcome && <ThemeToggle />}
     </div>
   );
 }
