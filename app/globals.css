@@ -227,10 +227,68 @@ html.dark .glass {
 /* Reveal Animation */
 @keyframes reveal {
   0% {
+    -webkit-clip-path: inset(0 100% 0 0);
     clip-path: inset(0 100% 0 0);
   }
   100% {
+    -webkit-clip-path: inset(0 0 0 0);
     clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Transform fallback for browsers that don't animate clip-path reliably (eg. older Safari) */
+@keyframes reveal-transform {
+  0% {
+    transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+  }
+}
+
+/* Utility reveal class that uses clip-path when supported, otherwise falls back to a transform scaleX animation. */
+@supports (clip-path: inset(0 0 0 0)) {
+  .reveal {
+    -webkit-clip-path: inset(0 100% 0 0);
+    clip-path: inset(0 100% 0 0);
+    transform-origin: left;
+    will-change: clip-path, -webkit-clip-path, transform;
+  }
+
+  .reveal.animate {
+    animation: reveal 0.8s ease forwards;
+  }
+}
+
+@supports not (clip-path: inset(0 0 0 0)) {
+  .reveal {
+    transform-origin: left;
+    -webkit-transform-origin: left;
+    transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    will-change: transform, opacity;
+  }
+
+  .reveal.animate {
+    animation: reveal-transform 0.8s ease forwards;
+  }
+}
+
+/* Reduce or disable heavy animations when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .float-animation,
+  .pulse-glow,
+  .shimmer,
+  .sparkle,
+  .reveal.animate {
+    animation: none !important;
+  }
+
+  /* Reduce transitions as well */
+  * {
+    transition: none !important;
   }
 }
 

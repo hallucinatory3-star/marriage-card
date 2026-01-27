@@ -5,6 +5,7 @@ import {
   useScroll,
   useTransform,
   AnimatePresence,
+  useReducedMotion,
 } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import confetti from "canvas-confetti";
@@ -133,14 +134,28 @@ function useWindowSize() {
 const FloatingParticles = () => {
   const windowSize = useWindowSize();
   const [isMounted, setIsMounted] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
+  const [isSafari, setIsSafari] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (typeof navigator !== "undefined") {
+      // Basic Safari detection (excludes Chrome/Android)
+      const ua = navigator.userAgent || "";
+      const safari = /^((?!chrome|android).)*safari/i.test(ua);
+      setIsSafari(safari);
+    }
+  }, []);
+
   if (!isMounted) {
     return null;
   }
+
+  // Honor user's reduced motion preference - do not render heavy particles
+  if (prefersReducedMotion) return null;
 
   // Rose petal colors - mix of gold and real rose colors
   const petalColors = [
@@ -154,7 +169,7 @@ const FloatingParticles = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {PARTICLE_DATA.map((particle, i) => {
+      {(isSafari ? PARTICLE_DATA.slice(0, 6) : PARTICLE_DATA).map((particle, i) => {
         const colorSet = petalColors[i % petalColors.length];
         return (
           <motion.div
