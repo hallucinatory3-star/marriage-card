@@ -20,29 +20,29 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
 });
 
-const weddingDate = new Date("2026-02-03T12:00:00");
+const mundanDate = new Date("2026-02-18T12:00:00");
 
 // UPDATE THIS to your actual Vercel URL
 const siteUrl = "https://marriage-card-nine.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Wedding Invitation | Celebration of Love",
-  description: `You're cordially invited to celebrate a special wedding ceremony. Join us for this joyous occasion filled with love, blessings, and celebration.`,
+  title: "Mundan Ceremony Invitation | Celebration",
+  description: `You're cordially invited to celebrate the Mundan ceremony of Mayank. Join us for this auspicious occasion filled with blessings and celebration.`,
   keywords: [
-    "wedding",
+    "mundan",
+    "ceremony",
     "invitation",
     "celebration",
-    "love",
-    "marriage",
-    "ceremony",
+    "auspicious",
     "festivities",
+    "mayank",
   ],
   openGraph: {
     title: "Tap to open your invitation.",
-    description: `Join us in the celebration filled with love and blessings.`,
+    description: `Join us in the auspicious celebration of the Mundan ceremony.`,
     type: "website",
-    siteName: "Wedding Invitation",
+    siteName: "Mundan Ceremony Invitation",
     locale: "en_US",
     url: siteUrl,
     images: [
@@ -50,14 +50,14 @@ export const metadata: Metadata = {
         url: `${siteUrl}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "Wedding Invitation",
+        alt: "Mundan Ceremony Invitation",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Tap to open your invitation.",
-    description: `Join us in the celebration filled with love and blessings.`,
+    description: `Join us in the auspicious celebration of the Mundan ceremony.`,
     images: [`${siteUrl}/twitter-image`],
   },
   other: {

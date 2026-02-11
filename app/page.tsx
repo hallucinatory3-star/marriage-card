@@ -947,7 +947,7 @@ const WelcomeOverlay = ({ onEnter }: { onEnter: () => void }) => {
       className="fixed inset-0 z-100 bg-[#faf8f5] flex items-center justify-center"
     >
       <div className="text-center px-6">
-        {/* Decorative ring */}
+        {/* Decorative ring with scissors icon */}
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
@@ -959,13 +959,19 @@ const WelcomeOverlay = ({ onEnter }: { onEnter: () => void }) => {
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             className="w-24 h-24 rounded-full border border-dashed border-[#d4af37]/30 flex items-center justify-center"
           >
-            <Image
-              src="/heart.webp"
-              alt="Heart"
-              width={60}
-              height={60}
-              className="object-contain"
-            />
+            <svg
+              className="w-12 h-12 text-[#d4af37]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M10 19.5a9.5 9.5 0 1019 0m-19 0a9.5 9.5 0 1019 0m-19 0c5.523 0 10-2.239 10-5m0 0c0-2.761-4.477-5-10-5m10 5v-3m-10 3v-3m7-2a2 2 0 11-4 0 2 2 0 014 0zm-7 0a2 2 0 11-4 0 2 2 0 014 0z"
+              />
+            </svg>
           </motion.div>
         </motion.div>
 
@@ -984,7 +990,7 @@ const WelcomeOverlay = ({ onEnter }: { onEnter: () => void }) => {
           transition={{ delay: 0.7 }}
           className="text-4xl md:text-6xl font-playfair text-[#d4af37] mb-8"
         >
-          Wedding Celebration
+          Mundan Ceremony
         </motion.h1>
 
         <motion.button
@@ -1153,10 +1159,9 @@ export default function Home() {
   };
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
-  // Wedding details
-  const weddingDate = new Date("2026-02-03T12:00:00");
-  const groomName = "Vikram";
-  const brideName = "Shagun";
+  // Mundan Ceremony details
+  const weddingDate = new Date("2026-02-18T12:00:00");
+  const childName = "Mayank";
 
   return (
     <div ref={containerRef} className="min-h-screen bg-background relative">
@@ -1293,7 +1298,7 @@ export default function Home() {
             className="font-cormorant text-foreground leading-relaxed mb-6 font-bold"
             style={{ fontSize: "calc(var(--fs-sacred) * 1.6)" }}
           >
-            #ShaiVikmeSauGun
+            #MayankKaMundan
           </p>
 
           {/* Date */}
@@ -1301,7 +1306,7 @@ export default function Home() {
             className="font-cormorant text-foreground leading-relaxed"
             style={{ fontSize: "calc(var(--fs-body) * 1.2)" }}
           >
-            Wednesday, February 4th, 2026
+            Wednesday, February 18th, 2026
           </p>
 
           {/* Countdown Timer */}
@@ -1330,7 +1335,7 @@ export default function Home() {
                 className="h-px bg-gradient-to-r from-transparent to-[#d4af37]"
               />
               <h2 className="text-4xl md:text-5xl font-playfair text-[#d4af37] whitespace-nowrap">
-                Invitation
+                Mundan Ceremony
               </h2>
               <motion.div
                 initial={{ width: 0 }}
@@ -1357,84 +1362,49 @@ export default function Home() {
               </p>
 
               <p
-                className="font-cormorant text-foreground leading-relaxed"
-                style={{ fontSize: "var(--fs-body)" }}
-              >
-                and the loving remembrance of our revered grandparents
-              </p>
-
-              <p
                 className="font-cormorant leading-relaxed"
                 style={{ fontSize: "var(--fs-lead)" }}
               >
                 <span className="font-semibold text-foreground whitespace-nowrap">
-                  Late Smt. Ram Devi &
+                  Mrs. Neelam Kumari &
                 </span>
                 <br />
                 <span className="font-semibold text-foreground whitespace-nowrap">
-                  Late Sh. Bhoop Ram Shan,
+                  Mr. Parveen Kumar
                 </span>
-              </p>
-
-              <p className="pt-6 font-cormorant text-foreground leading-relaxed"
-                style={{ fontSize: "var(--fs-lead)" }}
-              >
-                <span className="font-semibold text-foreground whitespace-nowrap">
-                  Smt. Koshaliya Devi &
-                </span>
-                <br />
-                <span className="font-semibold text-foreground whitespace-nowrap">
-                  Sh. Chamail Singh
-                </span>
-                <br />
               </p>
 
               <p
                 className="font-cormorant text-foreground leading-relaxed"
                 style={{ fontSize: "var(--fs-body)" }}
               >
-                joyfully open hearts to invite you to witness a tale of hearts entwining, where promises are whispered, dreams are shared and a lifetime begins in the glow of sacred vows - at the wedding celebration of their beloved son
+                request the pleasure of your company on this auspicious occasion
+              </p>
+
+              <p
+                className="font-cormorant text-foreground leading-relaxed"
+                style={{ fontSize: "var(--fs-body)" }}
+              >
+                for the Mundan Ceremony of their beloved son
               </p>
             </div>
 
-            {/* Names */}
+            {/* Child's Name */}
             <div className="space-y-2 my-2">
               <p
                 className="text-[#d4af37] font-black tracking-wide"
                 style={{ fontSize: "var(--fs-name)", fontFamily: "Lobster, cursive" }}
               >
-                {groomName}
-              </p>
-
-              <span className="text-lg font-cormorant">As he begins his timeless journey hand in hand</span>
-
-              <p className="font-cormorant tracking-widest text-lg">
-                with
-              </p>
-
-              <p
-                className="text-[#d4af37] font-black tracking-wide"
-                style={{ fontSize: "var(--fs-name)", fontFamily: "Lobster, cursive" }}
-              >
-                {brideName}
+                {childName}
               </p>
             </div>
 
-            {/* Bride Parents */}
+            {/* Date and Location */}
             <p
               className="font-cormorant text-foreground leading-relaxed"
               style={{ fontSize: "var(--fs-lead)" }}
             >
-              beloved daughter of <br />
-              <span className="font-semibold text-foreground whitespace-nowrap">
-                Smt. Madhu Bala Dubey &
-              </span>
-              <br />
-              <span className="font-semibold text-foreground whitespace-nowrap">
-                Sh. Desh Rattan Dubey
-              </span>
-
-              <span className="block m-4">On 4th February, 2026.</span>
+              <span className="block m-4">On 18th February, 2026.</span>
             </p>
 
               {/* Presence Message */}
@@ -1492,66 +1462,92 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-playfair text-[#d4af37] mb-4">
-              Wedding Festivities
+              Mundan Festivities
             </h2>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
             <EventCard
-              title="Mehendi Ceremony & Lunch"
-              date="3rd February 2026"
-              time="12:00 PM"
-              venue="Sahib Guest House"
-              address=""
+              title="Mundan Ceremony"
+              date="18th February 2026"
+              time="12:00 PM onwards"
+              venue="Tommal Anand Nagar, Bohri"
+              address="Jammu"
               delay={0}
             />
             <EventCard
-              title="Haldi (Saant) Ceremony & Lunch"
-              date="4th February 2026"
-              time="11:00 AM"
-              venue="Sahib Guest House"
-              address=""
+              title="Jagran"
+              date="18th February 2026"
+              time="08:00 PM onwards"
+              venue="Tommal Anand Nagar, Bohri"
+              address="Jammu"
               delay={0.2}
             />
           </div>
 
-          <div className="my-12" />
+          <div className="my-8" />
 
-          {/* Venue Map Section */}
-          <VenueMap
-            mapUrl="https://www.google.com/maps?q=Sahib+Guest+House+Jammu&output=embed"
-            venue="Sahib Guest House"
-            address="Jammu"
-          />
-
-          {/* Parking Information */}
+          {/* Venue Link for Mundan & Jagran */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-8 text-center"
+            className="text-center mb-12"
           >
-            <p className="text-base md:text-lg font-cormorant text-foreground mb-2">
-              Kindly park your vehicles at the following locations:
+            <p className="text-base md:text-lg font-cormorant text-foreground mb-4">
+              For Mundan Ceremony & Jagran Location:
             </p>
             <a
-              href="https://maps.app.goo.gl/nxRowSaU7ciaMpNh6?g_st=ig"
+              href="https://maps.app.goo.gl/MsMmN1ArJ9JuzFNh7"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base md:text-lg font-cormorant text-blue-600 hover:text-blue-800 transition-colors underline mr-4"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/40 hover:bg-[#d4af37]/20 hover:border-[#d4af37] transition-all duration-300"
             >
-              Parking Area One
-            </a>
-            <a
-              href="https://maps.app.goo.gl/tY1KEge2BgufRSi27?g_st=iw"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-base md:text-lg font-cormorant text-blue-600 hover:text-blue-800 transition-colors underline"
-            >
-              Parking Area Two
+              <svg
+                className="w-5 h-5 text-[#d4af37]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+              <span className="font-playfair text-lg text-[#d4af37]">
+                View Location
+              </span>
             </a>
           </motion.div>
+
+          <div className="grid md:grid-cols-1 gap-8">
+            <EventCard
+              title="Dinner"
+              date="19th February 2026"
+              time="07:00 PM onwards"
+              venue="Grand Reves Resort"
+              address="Uddheywala"
+              delay={0.4}
+            />
+          </div>
+
+          <div className="my-12" />
+
+          {/* Venue Map Section - Single Map for Dinner Venue */}
+          <VenueMap
+            mapUrl="https://www.google.com/maps?q=Grand+Reves+Resort+Uddheywala&output=embed"
+            venue="Grand Reves Resort"
+            address="Uddheywala"
+          />
         </div>
       </section>
 
@@ -1620,7 +1616,7 @@ export default function Home() {
             <div className="h-px w-20 bg-gradient-to-l from-transparent to-[#d4af37]" />
           </div>
 
-          {/* Main heading */}
+          {/* Main heading - Child Name */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -1629,36 +1625,8 @@ export default function Home() {
             className="mb-6 flex flex-wrap items-center justify-center gap-3 md:gap-4"
           >
             <h2 className="text-3xl md:text-5xl lg:text-6xl text-[#d4af37] leading-tight font-black" style={{ fontFamily: "Lobster, cursive" }}>
-              {groomName}
+              {childName}
             </h2>
-            <motion.span
-              initial={{ scale: 0, rotate: -45 }}
-              whileInView={{ scale: 1, rotate: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
-              className="text-2xl md:text-4xl text-[#d4af37] font-cormorant font-light italic"
-            >
-              &amp;
-            </motion.span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl text-[#d4af37] leading-tight font-black" style={{ fontFamily: "Lobster, cursive" }}>
-              {brideName}
-            </h2>
-          </motion.div>
-
-          {/* Nemo Mention */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-            className="mb-8"
-          >
-            <p className="text-base md:text-lg font-cormorant text-foreground/80 leading-relaxed">
-              With special love and blessings from beloved nephew:{" "}
-              <span className="font-semibold text-foreground text-lg md:text-xl">
-                Nemo
-              </span>
-            </p>
           </motion.div>
 
           {/* Decorative divider */}
@@ -1681,42 +1649,30 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-2 text-base md:text-lg font-cormorant">
               <a
-                href="tel:+918899277840"
+                href="tel:+917006181868"
                 className="text-foreground hover:text-[#d4af37] transition-colors"
               >
-                8899277840
+                7006181868
               </a>
               <span className="text-muted">•</span>
               <a
-                href="tel:+917006751473"
+                href="tel:+919419725046"
                 className="text-foreground hover:text-[#d4af37] transition-colors"
               >
-                7006751473
+                9419725046
               </a>
               <span className="text-muted">•</span>
               <a
-                href="tel:+919906016244"
+                href="tel:+917889520330"
                 className="text-foreground hover:text-[#d4af37] transition-colors"
               >
-                9906016244
+                7889520330
               </a>
             </div>
           </motion.div>
 
-          {/* Social links */}
+          {/* Share Button */}
           <div className="mt-4 flex justify-center gap-6 items-center">
-            <motion.a
-              href="https://www.instagram.com/dr_vvvs/"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, color: "#d4af37" }}
-              className="text-muted transition-colors"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-            </motion.a>
-            {/* Share Button */}
             <ShareButton />
           </div>
         </motion.div>
