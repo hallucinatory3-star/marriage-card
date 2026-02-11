@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = "You're Invited to Our Wedding"
+export const alt = "Mundan Ceremony"
 export const size = {
   width: 1200,
   height: 630,
@@ -10,8 +10,8 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function Image() {
-  // Wedding details
-  const weddingDate = new Date("2026-02-03T12:00:00");
+  // Mundan Ceremony details
+  const mundanDate = new Date("2026-02-18T12:00:00");
 
   return new ImageResponse(
     (
@@ -146,23 +146,10 @@ export default async function Image() {
           }}
         />
 
-        {/* You're Invited text */}
+        {/* Mundan Ceremony Text - Only Content */}
         <div
           style={{
-            color: 'rgba(212,175,55,0.9)',
-            fontSize: '22px',
-            letterSpacing: '10px',
-            textTransform: 'uppercase',
-            marginBottom: '25px',
-          }}
-        >
-          You&apos;re Invited To
-        </div>
-
-        {/* Wedding Celebration Text */}
-        <div
-          style={{
-            fontSize: '56px',
+            fontSize: '72px',
             background: 'linear-gradient(135deg, #d4af37 0%, #f5e6c4 50%, #d4af37 100%)',
             backgroundClip: 'text',
             color: 'transparent',
@@ -172,75 +159,7 @@ export default async function Image() {
             textAlign: 'center',
           }}
         >
-          Wedding Celebration
-        </div>
-
-        {/* Decorative divider */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '15px',
-            margin: '25px 0',
-          }}
-        >
-          <div
-            style={{
-              width: '80px',
-              height: '1px',
-              background: 'linear-gradient(90deg, transparent, #d4af37)',
-            }}
-          />
-          <div
-            style={{
-              width: '10px',
-              height: '10px',
-              border: '2px solid #d4af37',
-              transform: 'rotate(45deg)',
-            }}
-          />
-          <div
-            style={{
-              width: '80px',
-              height: '1px',
-              background: 'linear-gradient(90deg, #d4af37, transparent)',
-            }}
-          />
-        </div>
-
-        {/* Date */}
-        <div
-          style={{
-            color: '#f5e6c4',
-            fontSize: '28px',
-            fontStyle: 'italic',
-          }}
-        >
-          {weddingDate.toLocaleDateString()}
-        </div>
-
-        {/* Bottom text */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '55px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-          }}
-        >
-          <span style={{ color: 'rgba(212,175,55,0.5)', fontSize: '20px' }}>✨</span>
-          <span
-            style={{
-              color: 'rgba(212,175,55,0.7)',
-              fontSize: '16px',
-              letterSpacing: '4px',
-              textTransform: 'uppercase',
-            }}
-          >
-            Tap to Open Your Invitation
-          </span>
-          <span style={{ color: 'rgba(212,175,55,0.5)', fontSize: '20px' }}>✨</span>
+          Mundan Ceremony
         </div>
       </div>
     ),
