@@ -23,7 +23,7 @@ const inter = Inter({
 const mundanDate = new Date("2026-02-18T12:00:00");
 
 // UPDATE THIS to your actual Vercel URL
-const siteUrl = "https://marriage-card-nine.vercel.app";
+const siteUrl = "https://mundan-card-nine.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
